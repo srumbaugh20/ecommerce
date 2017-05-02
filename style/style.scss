@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css?family=Niconne|Raleway:500');
+
+.logoheader {
+  height:150px;
+  min-height: 50px;
+  max-height: 150px;
+  background: transparent;
+}
+
+.logodiv {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 100px;
+  max-width: 100%;
+}
+
+.logoimage {
+  width : 435px;
+	height: 150px;
+  margin-left: auto;
+  margin-right: auto;
+	background: url(/images/logo.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+}
+
+.menubar {
+width: 100%;
+margin-left: auto;
+margin-right: auto;
+margin-top: 0;
+margin-bottom: 0;
+}
+
+.bar {
+  display: inline-block;
+}
+
+
+.scroll{
+	width:100vw;
+	height: 85vh;
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	overflow-y: scroll;
+}
+
+.individualtemples {
+  width:25%;
+  height: auto;
+}
+
+.templegrid {
+  width:100%;
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+}
