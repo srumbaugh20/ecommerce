@@ -1,8 +1,47 @@
 <!-- individul temple pages -->
-<div class="individualtemples">
-  <img src="{{singletemple.imageurl}}" />
-  <div class="templename">
-    {{singletemple.name}}
+<ul class="breadcrumb">
+  <li><a ui-sref="home">Home</a></li>
+  <li><a ui-sref="temples">Temple Art</a></li>
+  <li style="font-size:16px;"><a> {{singleitem.name}} </a></li>
+</ul>
+<div class="divider"></div>
 
-  </div>
+<div class="templedetails">
+
+<div class="itemdetails">
+    <div class="templename">
+      <p style="font-size: 35px">
+      {{singleitem.name}}
+      </p>
+      <b></b>
+      <p>
+      {{singleitem.descript}}
+      </p>
+      <b></b>
+      <p>
+      {{price}}
+      </p>
+    </div>
+    <div class="orderoptions">
+
+        <select placeholder="Select Size" class="itemsizeselector" ng-options="size.size for size in sizes track by size.price" ng-model="size_option" ng-change="select_size()">
+          <option value="" disabled>Select size</option>
+        </select>
+        <form class="quantityoption">
+        Quantity:
+        <input type="number" name="points" min="0" max="100" step="1" value="1" ng-model="quantity">
+        </form>
+    </div>
+    <button class="addtocartbutton" ng-click="addtocart()">Add to cart</button>
+    <p class="templename" ng-show="showMessage" style="margin-botom:15px;">
+      {{msg}}
+    </p>
+    <div>
+
+    </div>
+</div>
+
+  <img src="{{singleitem.imageurl}}" class="individualtemplesimage"/>
+
+
 </div>

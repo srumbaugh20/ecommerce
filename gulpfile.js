@@ -43,7 +43,7 @@ gulp.task('templates', function() {
 });
 
 
-gulp.task('build', ['build-css', 'build-js', 'templates', 'watch'], function() {
+gulp.task('build', ['build-css', 'build-js', 'templates'], function() {
     return gulp.src('index.html')
         .pipe(cachebust.references())
         .pipe(gulp.dest('dist'));

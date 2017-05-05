@@ -2,60 +2,37 @@
 <html lang="en" ng-app="app">
 <head>
     <meta charset="UTF-8">
-    <title>Heaven on Earth Art</title>
+    <title>Watercolors by Debbie</title>
+    <link href="https://fonts.googleapis.com/css?family=Niconne|Montserrat:400,500|Raleway:500" rel="stylesheet">
     <link rel="stylesheet" href="./styles.css">
-    <link rel="icon" href="/images/templeIcon.ico">
+    <link rel="icon" href="/images/greenIcon.ico">
+
 </head>
-<body ng-controller="templeCtrl">
+<body class='wrapper'>
 <!--This div wraps the entire page-->
-<div>
-
-    <div class="logoheader">
-    <div class="logodiv">
-        <div class="logoimage">
-        </div>
-
-      </div>
-    </div>
-
-
-        <header role="banner" class="menubar">
-            <div >
-
-
-                    <ul class="bar">
-                      <li>
-                          <a ui-sref="home">Home</a>
-                      </li>
-                        <li>
-                            <a ui-sref="temples">Temple Art</a>
-                        </li>
-                        <li>
-                            <a ui-sref="about">My Story</a>
-                        </li>
-                        <li>
-                            <a ui-sref="contact">Contact</a>
-                        </li>
-                    </ul>
 
 
 
-            </div>
-        </header>
-      </div>
-        <!--This is the main wrapper -->
-        <main role="main">
+
+      
+
 
 
           <ui-view></ui-view>
 
-        </main>
-        </div>
+
+
 
 
 <!--ADD ALL YOUR SCRIPTS HERE -->
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-cookies.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<!-- <script src="https://cdn.auth0.com/js/lock/10.15/lock.min.js"></script>
+<script src="node_modules/auth0-js/build/auth0.js"></script>
+<script src="node_modules/angular-lock/dist/angular-lock.js"></script>
+<script src="node_modules/angular-jwt/dist/angular-jwt.js"></script> -->
 <script src="./templateBundle.js"></script>
 <script src="./js/bundle.js"></script>
 

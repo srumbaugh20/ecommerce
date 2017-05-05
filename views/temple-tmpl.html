@@ -1,10 +1,10 @@
 <!-- loads all temples using ng-repeat -->
 
-  <div>
-
   <div class="individualtemples">
-    <img src="{{temple.imageurl}}" ui-sref='templedetails({id:temple.id})' />
-    <div class="templename">
+
+  <div>
+    <img src="{{temple.imageurl}}" class="templeimage" ui-sref='templedetails({id:temple.id})' />
+    <div class="templename" ui-sref='templedetails({id:temple.id})'>
       {{temple.name}}
 
     </div>

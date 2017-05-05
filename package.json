@@ -9,6 +9,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "angular-jwt": "^0.1.9",
+    "angular-lock": "^2.0.2",
+    "auth0-js": "^8.6.0",
     "babel-preset-es2015": "^6.24.1",
     "body-parser": "^1.17.1",
     "cors": "^2.8.3",

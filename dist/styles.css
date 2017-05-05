@@ -1,8 +1,174 @@
-@import url("https://fonts.googleapis.com/css?family=Niconne|Raleway:500");
+/* Bordered form */
+form {
+  border: 3px solid #f1f1f1; }
+
+/* Full-width inputs */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box; }
+
+/* Set a style for all buttons */
+button {
+  background-color: #281079;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%; }
+
+/* Add a hover effect for buttons */
+button:hover {
+  opacity: 0.8; }
+
+/* Extra style for the cancel button (blue) */
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #24197e; }
+
+/* Center the avatar image inside this container */
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0; }
+
+/* Avatar image */
+img.avatar {
+  width: 20%;
+  max-height: 30vh; }
+
+/* Add padding to containers */
+.container {
+  padding: 16px; }
+
+/* The "Forgot password" text */
+span.psw {
+  float: right;
+  padding-top: 16px; }
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+    display: block;
+    float: none; }
+  .cancelbtn {
+    width: 100%; } }
+
+[ng-cloak] {
+  display: none; }
+
+.wrapper {
+  background: white;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  width: 100%;
+  height: 100vh; }
+
+.divider {
+  border-top: 1px solid #f2f2f2;
+  margin-bottom: 20px; }
+
+.imageheadercontainer {
+  width: 100%;
+  height: 30vh;
+  margin-left: 3%;
+  margin-right: 3%;
+  margin-bottom: 20px; }
+
+.imageheader {
+  width: 100%;
+  height: 30vh;
+  background: url(/images/templeartheader.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center; }
+
+.imageheader2 {
+  width: 100%;
+  height: 30vh;
+  background: url(/images/watercolorheader.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center; }
+
+.homeheader {
+  width: 100%;
+  height: 60vh;
+  background: url(/images/homeheader.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center; }
+
+.threeimages {
+  width: 100%;
+  height: 33vh; }
+
+.box1 {
+  width: 33%;
+  height: 33vh;
+  display: inline-block;
+  float: left;
+  background: url(/images/box1.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center; }
+
+.box2 {
+  width: 33%;
+  height: 33vh;
+  display: inline-block;
+  float: left;
+  background: url(/images/box2.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center; }
+
+.box3 {
+  width: 34%;
+  height: 33vh;
+  display: inline-block;
+  float: left;
+  background: url(/images/box3.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center; }
+
+a:link {
+  text-decoration: none;
+  font-family: 'Montserrat';
+  color: #0c164b;
+  font-size: 16px; }
+
+a:visited {
+  text-decoration: none;
+  font-family: 'Montserrat';
+  color: #0c164b;
+  font-size: 16px; }
+
+a:hover {
+  text-decoration: underline;
+  font-family: 'Montserrat';
+  color: #0c164b;
+  font-size: 16px; }
+
+a:active {
+  text-decoration: underline;
+  font-family: 'Montserrat';
+  color: #0c164b;
+  font-size: 16px; }
+
 .logoheader {
   height: 150px;
   min-height: 50px;
   max-height: 150px;
+  margin-bottom: 20px;
+  margin-right: 65px;
   background: transparent; }
 
 .logodiv {
@@ -14,41 +180,258 @@
   max-width: 100%; }
 
 .logoimage {
-  width: 435px;
+  width: 500px;
   height: 150px;
   margin-left: auto;
   margin-right: auto;
-  background: url(/images/logo.png);
+  background: url(/images/logo2.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center; }
 
-.menubar {
+.menucontainer {
+  margin: 0 auto;
   width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 0;
-  margin-bottom: 0; }
-
-.bar {
+  text-align: center;
   display: inline-block; }
 
-.scroll {
-  width: 100vw;
-  height: 85vh;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  overflow-y: scroll; }
+.menubar {
+  font-family: 'Montserrat';
+  color: #0c164b;
+  font-size: 18px;
+  margin-left: 58px;
+  padding: 0; }
 
-.individualtemples {
-  width: 25%;
-  height: auto; }
+.menu-links {
+  margin-left: auto;
+  margin-right: auto; }
 
-.templegrid {
+.cartcontainer {
+  float: right;
+  display: block;
+  position: relative;
+  margin-right: 3%; }
+
+.cartIcon {
+  width: 28px;
+  height: 14px;
+  display: inline-block;
+  background: url(/images/cart.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center; }
+
+ul.breadcrumb {
+  margin-top: 30px;
+  padding: 5px 16px;
+  list-style: none;
+  background-color: #fff;
+  color: #0c164b;
+  font-family: 'Montserrat';
+  font-size: 12px; }
+
+/* Display list items side by side */
+ul.breadcrumb li {
+  display: inline;
+  color: #0c164b; }
+
+/* Add a slash symbol (/) before/behind each list item */
+ul.breadcrumb li + li:before {
+  padding: 8px;
+  color: #0c164b;
+  content: "/\00a0"; }
+
+/* Add a color to all links inside the list */
+ul.breadcrumb li a {
+  color: #0c164b;
+  text-decoration: none; }
+
+/* Add a color on mouse-over */
+ul.breadcrumb li a:hover {
+  color: #0c164b;
+  text-decoration: underline; }
+
+.scrollbox {
+  width: 100%;
+  height: 100vh;
+  overflow-y: scroll;
+  max-width: 100%;
+  overflow-x: hidden; }
+
+.templediv {
   width: 100%;
   height: 100vh;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around; }
+
+.individualtemples {
+  width: 370px;
+  height: auto;
+  background: #fff;
+  margin-left: 22px;
+  padding-top: 20px;
+  padding-bottom: 20px; }
+
+.templedetails {
+  width: 100%;
+  height: auto;
+  background: #fff;
+  margin-left: 22px;
+  padding-top: 20px;
+  padding-bottom: 20px; }
+
+.itemdetails {
+  width: 370px;
+  height: auto;
+  background: #fff;
+  margin-left: 22px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: inline-block;
+  float: left; }
+
+.orderoptions {
+  display: inline-block;
+  margin-left: 20px;
+  margin-bottom: 10px; }
+
+.itemsizeselector {
+  font-family: 'Montserrat';
+  color: #0c164b;
+  font-size: 16px;
+  float: left;
+  margin-right: 10px; }
+
+.quantityoption {
+  font-family: 'Montserrat';
+  color: #0c164b;
+  font-size: 16px;
+  float: left;
+  border: none;
+  font-size: 1em;
+  border-radius: 2px;
+  background: #ffffff;
+  letter-spacing: 0.8px;
+  box-shadow: none;
+  -webkit-appearance: none; }
+
+.individualtemplesimage {
+  width: 370px;
+  height: auto;
+  background: #fff;
+  margin-left: 22px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  float: left;
+  margin-left: 10%; }
+
+.templeimage {
+  width: 340px;
+  height: 466px;
+  margin-left: 20px;
+  margin-top: 12px; }
+
+.templename {
+  font-family: 'Montserrat';
+  color: #0c164b;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-left: 20px; }
+
+.addtocartbutton {
+  background-color: #0c164b;
+  border: none;
+  width: 320px;
+  color: white;
+  font-family: 'Montserrat';
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 15px;
+  margin-left: 20px; }
+
+.aboutcontainer {
+  font-family: 'Montserrat';
+  color: #0c164b;
+  font-size: 16px;
+  margin-left: 5%;
+  margin-right: 5%; }
+
+.about-three-photos-top {
+  height: auto;
+  width: 55%;
+  margin-top: 30px;
+  margin-right: 2%;
+  position: relative;
+  display: flex;
+  flex-direction: row;
   flex-wrap: wrap; }
+
+.about-three-photos-bottom {
+  height: auto;
+  width: 55%;
+  margin-top: 30px;
+  margin-left: 2%;
+  float: right;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; }
+
+.about-photo1 {
+  width: 30%;
+  height: 20vh;
+  margin-bottom: 30px;
+  background: url(/images/about1.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center; }
+
+.about-photo2 {
+  width: 30%;
+  height: 20vh;
+  margin-left: 30px;
+  background: url(/images/about2.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center; }
+
+.about-photo3 {
+  width: 30%;
+  height: 20vh;
+  margin-left: 30px;
+  background: url(/images/about3.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center; }
+
+.about-photo4 {
+  width: 30%;
+  height: 20vh;
+  background: url(/images/about4.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  margin-bottom: 10px; }
+
+.about-photo5 {
+  width: 30%;
+  height: 20vh;
+  margin-left: 30px;
+  background: url(/images/about5.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center; }
+
+.about-photo6 {
+  width: 30%;
+  height: 20vh;
+  margin-left: 30px;
+  background: url(/images/about6.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center; }
 
 /*# sourceMappingURL=maps/styles.css.map */
