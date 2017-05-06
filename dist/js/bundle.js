@@ -84,8 +84,8 @@ angular.module('app').controller('cartCtrl', function ($scope, $timeout, $stateP
 angular.module('app').directive('directive', function () {
   //
   return {
-    // templateUrl: './app/temple-tmpl.html',
-    template: "<p>hello</p>",
+    templateUrl: './app/temple-tmpl.html',
+
     restrict: 'AE'
 
   };
@@ -97,23 +97,34 @@ angular.module('app').controller('headerCtrl', function ($scope, $timeout, $stat
   $scope.test = "test works";
 
   $scope.cart = $cookies.getObject('cart');
-  console.log($scope.cart);
 
   function cartCounter() {
-    var cartCount = 0;
+    var cartCount = {
+      num: 0
+    };
     for (var i = 0; i < $scope.cart.length; i++) {
-      cartCount += $scope.cart[i].quantity;
+      cartCount.num += $scope.cart[i].quantity;
       console.log("for loop", cartCount);
     }
-    $scope.cartnumber.num = cartCount;
+    $scope.cartnumber = cartCount.num;
     console.log("cart count", $scope.cartnumber);
   }
 
   cartCounter();
 
-  // $scope.$watch('click', function() {
+  // $scope.$watch($scope.cart, function() {
   //         cartCounter();
   //     });
+});
+'use strict';
+
+angular.module('app').directive('headerdirective', function () {
+  //
+  return {
+    templateUrl: './app/header.html',
+    restrict: 'AE'
+
+  };
 });
 'use strict';
 
@@ -216,7 +227,7 @@ angular.module('app').controller('templeCtrl', function ($scope, $timeout, $stat
 });
 'use strict';
 
-angular.module('app').controller('templeCtrl', function ($scope, $timeout, $stateParams, templeService, $cookies) {
+angular.module('app').controller('templeDetailsCtrl', function ($scope, $timeout, $stateParams, templeService, $cookies) {
 
   $scope.test = "test works";
 
@@ -289,12 +300,14 @@ angular.module('app').controller('templeCtrl', function ($scope, $timeout, $stat
   };
 
   function cartCounter() {
-    var cartCount = 0;
+    var cartCount = {
+      num: 0
+    };
     for (var i = 0; i < $scope.cart.length; i++) {
-      cartCount += $scope.cart[i].quantity;
+      cartCount.num += $scope.cart[i].quantity;
       console.log("for loop", cartCount);
     }
-    $scope.cartnumber.num = cartCount;
+    $scope.cartnumber = cartCount.num;
     console.log("cart count", $scope.cartnumber);
   }
 

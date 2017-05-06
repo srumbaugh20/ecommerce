@@ -1,4 +1,4 @@
-angular.module('app').controller('templeCtrl', function($scope, $timeout, $stateParams,  templeService, $cookies){
+angular.module('app').controller('templeDetailsCtrl', function($scope, $timeout, $stateParams,  templeService, $cookies){
 
 $scope.test = "test works";
 
@@ -83,12 +83,14 @@ $scope.addedmessage();
 }
 
 function cartCounter(){
-  var cartCount = 0;
+  var cartCount = {
+    num: 0
+  };
   for (var i = 0; i < $scope.cart.length; i++) {
-    cartCount += $scope.cart[i].quantity;
+    cartCount.num += $scope.cart[i].quantity;
     console.log("for loop", cartCount);
   }
-  $scope.cartnumber.num = cartCount
+  $scope.cartnumber = cartCount.num
   console.log("cart count", $scope.cartnumber);
 }
 
