@@ -49,6 +49,7 @@ $scope.addtocart = function(){
       id: $scope.singleitem.id,
       name:$scope.singleitem.name,
       size: $scope.size_option,
+      descript: $scope.singleitem.descript,
       image: $scope.singleitem.imageurl,
       quantity: $scope.quantity
   });
@@ -67,6 +68,7 @@ $scope.addtocart = function(){
       id: $scope.singleitem.id,
       name:$scope.singleitem.name,
       size: $scope.size_option,
+      descript: $scope.singleitem.descript,
       image: $scope.singleitem.imageurl,
       quantity: $scope.quantity
     })

@@ -4,7 +4,7 @@ $scope.test = "test works";
 
 $scope.cartnumber = {num: 0};
 
-$scope.cart = $cookies.getObject('cart');
+$scope.cart = $cookies.getObject('cart') || [];
 console.log($scope.cart);
 
 
@@ -18,15 +18,40 @@ console.log($scope.cart);
 
 
 function cartCounter(){
-  var cartCount = 0;
+  var cartCount = {
+    num: 0
+  };
   for (var i = 0; i < $scope.cart.length; i++) {
-    cartCount += $scope.cart[i].quantity;
+    cartCount.num += $scope.cart[i].quantity;
     console.log("for loop", cartCount);
   }
-  $scope.cartnumber.num = cartCount
+  $scope.cartnumber = cartCount.num
   console.log("cart count", $scope.cartnumber);
 }
 
 cartCounter();
+
+
+var gettotal = function (){
+  var grandtotal = {
+    total: 0
+  }
+  for (var i = 0; i < $scope.cart.length; i++) {
+    grandtotal.total += ($scope.cart[i].quantity * $scope.cart[i].size.price)
+  }
+  $scope.grandtotal = grandtotal.total
+
+}
+
+gettotal();
+
+// $scope.quantityupdate = function(index){
+//   console.log($scope.cart[index].quantity);
+//   console.log($scope.cart);
+//   gettotal();
+// };
+
+
+
 
 });

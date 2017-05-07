@@ -2,7 +2,7 @@ angular.module('app').controller('headerCtrl', function($scope, $timeout, $state
 
 $scope.test = "test works";
 
-$scope.cart = $cookies.getObject('cart');
+$scope.cart = $cookies.getObject('cart') || [];
 
 function cartCounter (){
   var cartCount = {

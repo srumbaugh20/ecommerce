@@ -55,7 +55,7 @@ angular.module('app').controller('cartCtrl', function ($scope, $timeout, $stateP
 
   $scope.cartnumber = { num: 0 };
 
-  $scope.cart = $cookies.getObject('cart');
+  $scope.cart = $cookies.getObject('cart') || [];
   console.log($scope.cart);
 
   // $scope.addedmessage = function() {
@@ -68,16 +68,37 @@ angular.module('app').controller('cartCtrl', function ($scope, $timeout, $stateP
 
 
   function cartCounter() {
-    var cartCount = 0;
+    var cartCount = {
+      num: 0
+    };
     for (var i = 0; i < $scope.cart.length; i++) {
-      cartCount += $scope.cart[i].quantity;
+      cartCount.num += $scope.cart[i].quantity;
       console.log("for loop", cartCount);
     }
-    $scope.cartnumber.num = cartCount;
+    $scope.cartnumber = cartCount.num;
     console.log("cart count", $scope.cartnumber);
   }
 
   cartCounter();
+
+  var gettotal = function gettotal() {
+    var grandtotal = {
+      total: 0
+    };
+    for (var i = 0; i < $scope.cart.length; i++) {
+      grandtotal.total += $scope.cart[i].quantity * $scope.cart[i].size.price;
+    }
+    $scope.grandtotal = grandtotal.total;
+  };
+
+  gettotal();
+
+  // $scope.quantityupdate = function(index){
+  //   console.log($scope.cart[index].quantity);
+  //   console.log($scope.cart);
+  //   gettotal();
+  // };
+
 });
 'use strict';
 
@@ -96,7 +117,7 @@ angular.module('app').controller('headerCtrl', function ($scope, $timeout, $stat
 
   $scope.test = "test works";
 
-  $scope.cart = $cookies.getObject('cart');
+  $scope.cart = $cookies.getObject('cart') || [];
 
   function cartCounter() {
     var cartCount = {
@@ -132,11 +153,6 @@ angular.module('app').controller('templeCtrl', function ($scope, $timeout, $stat
 
   $scope.test = "test works";
 
-  $scope.cartnumber = { num: 0 };
-
-  $scope.cart = $cookies.getObject('cart') || [];
-  console.log($scope.cart);
-
   var getData = function getData() {
     templeService.getTemples().then(function (response) {
       $scope.temples = response.data;
@@ -145,85 +161,6 @@ angular.module('app').controller('templeCtrl', function ($scope, $timeout, $stat
   };
 
   getData();
-
-  var getSingleData = function getSingleData() {
-    templeService.getTemples().then(function (response) {
-      for (var i = 0; i < response.data.length; i++) {
-        if (response.data[i].id == $stateParams.id) {
-          $scope.singleitem = response.data[i];
-        }
-      }
-    });
-  };
-
-  getSingleData();
-
-  $scope.sizes = [{ size: 'Large-11"x14"', price: 24 }, { size: 'Medium-8"x10"', price: 18 }, { size: 'Small-4"x6"', price: 12 }];
-
-  $scope.select_size = function () {
-    $scope.price = '$' + $scope.size_option.price;
-    console.log($scope.size_option);
-  };
-
-  $scope.addedmessage = function () {
-    $scope.msg = "Added to cart!";
-    $scope.showMessage = true;
-    $timeout(function () {
-      $scope.showMessage = false;
-    }, 2000);
-  };
-
-  $scope.addtocart = function () {
-    if ($scope.cart.length === 0) {
-      $scope.cart.push({
-        id: $scope.singleitem.id,
-        name: $scope.singleitem.name,
-        size: $scope.size_option,
-        image: $scope.singleitem.imageurl,
-        quantity: $scope.quantity
-      });
-      cartCounter();
-    } else {
-      var flag = false;
-      for (var i = 0; i < $scope.cart.length; i++) {
-        if ($scope.cart[i].id === $scope.singleitem.id && $scope.cart[i].size.size === $scope.size_option.size) {
-          $scope.cart[i].quantity += $scope.quantity;
-          flag = true;
-        }
-      }
-      cartCounter();
-      if (!flag) {
-        $scope.cart.push({
-          id: $scope.singleitem.id,
-          name: $scope.singleitem.name,
-          size: $scope.size_option,
-          image: $scope.singleitem.imageurl,
-          quantity: $scope.quantity
-        });
-        cartCounter();
-      }
-    }
-
-    $cookies.putObject('cart', $scope.cart);
-    console.log($scope.cart);
-    $scope.addedmessage();
-  };
-
-  function cartCounter() {
-    var cartCount = 0;
-    for (var i = 0; i < $scope.cart.length; i++) {
-      cartCount += $scope.cart[i].quantity;
-      console.log("for loop", cartCount);
-    }
-    $scope.cartnumber.num = cartCount;
-    console.log("cart count", $scope.cartnumber);
-  }
-
-  cartCounter();
-
-  // $scope.$watch('click', function() {
-  //         cartCounter();
-  //     });
 });
 'use strict';
 
@@ -269,6 +206,7 @@ angular.module('app').controller('templeDetailsCtrl', function ($scope, $timeout
         id: $scope.singleitem.id,
         name: $scope.singleitem.name,
         size: $scope.size_option,
+        descript: $scope.singleitem.descript,
         image: $scope.singleitem.imageurl,
         quantity: $scope.quantity
       });
@@ -287,6 +225,7 @@ angular.module('app').controller('templeDetailsCtrl', function ($scope, $timeout
           id: $scope.singleitem.id,
           name: $scope.singleitem.name,
           size: $scope.size_option,
+          descript: $scope.singleitem.descript,
           image: $scope.singleitem.imageurl,
           quantity: $scope.quantity
         });
