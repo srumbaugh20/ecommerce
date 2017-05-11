@@ -496,6 +496,9 @@ angular.module('app').controller('templeDetailsCtrl', function ($scope, $timeout
 
   cartCounter();
 });
+"use strict";
+
+var test = "test";
 'use strict';
 
 angular.module('app').controller('watercolorDetailsCtrl', function ($scope, $timeout, $stateParams, storeService, $cookies) {
