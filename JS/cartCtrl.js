@@ -1,4 +1,4 @@
-angular.module('app').controller('cartCtrl', function($scope, $timeout, $stateParams,  templeService, $cookies){
+angular.module('app').controller('cartCtrl', function($scope, $timeout, $stateParams,  storeService, $cookies){
 
 $scope.test = "test works";
 
@@ -8,13 +8,13 @@ $scope.cart = $cookies.getObject('cart') || [];
 console.log($scope.cart);
 
 
-// $scope.addedmessage = function() {
-//        $scope.msg="Added to cart!";
-//        $scope.showMessage = true;
-//        $timeout(function(){
-//           $scope.showMessage = false;
-//        }, 2000);
-//     };
+$scope.updatedmessage = function() {
+       $scope.msg="Cart updated!";
+       $scope.showMessage = true;
+       $timeout(function(){
+          $scope.showMessage = false;
+       }, 2000);
+    };
 
 
 function cartCounter(){
@@ -26,6 +26,7 @@ function cartCounter(){
     console.log("for loop", cartCount);
   }
   $scope.cartnumber = cartCount.num
+
   console.log("cart count", $scope.cartnumber);
 }
 
@@ -34,7 +35,7 @@ cartCounter();
 
 var gettotal = function (){
   var grandtotal = {
-    total: 0
+    total: 3
   }
   for (var i = 0; i < $scope.cart.length; i++) {
     grandtotal.total += ($scope.cart[i].quantity * $scope.cart[i].size.price)
@@ -45,11 +46,44 @@ var gettotal = function (){
 
 gettotal();
 
-// $scope.quantityupdate = function(index){
-//   console.log($scope.cart[index].quantity);
-//   console.log($scope.cart);
-//   gettotal();
-// };
+$scope.quantityupdate = function(index){
+  console.log($scope.cart[index].quantity);
+  console.log($scope.cart);
+  $cookies.putObject('cart', $scope.cart);
+  gettotal();
+  cartCounter();
+  $scope.$apply();
+  $scope.updatedmessage();
+};
+
+// $scope.remove = function(index){
+//   if (index > -1) {
+//       $scope.cart.splice(index, 1);
+//     }
+//     $cookies.putObject('cart', $scope.cart);
+// }
+
+
+
+$scope.remove = function($index){
+  swal({
+  title: "Are you sure?",
+  text: "Remove the item from the cart?",
+  type: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#DD6B55",
+  confirmButtonText: "Yes, remove item!",
+  closeOnConfirm: false
+},
+function(){
+  if ($index > -1) {
+      $scope.cart.splice($index, 1);
+    }
+  $cookies.putObject('cart', $scope.cart);
+  $scope.$apply();
+  swal("Deleted!", "That order has been deleted.", "success");
+});
+}
 
 
 

@@ -5,13 +5,13 @@
 </ul>
 <div class="divider"></div>
 
-
+<input class="filter-input" ng-model="byName" placeholder="Filter by temple name"/>
 <div class="scrollbox">
   <div class="imageheadercontainer">
     <div class="imageheader"></div>
   </div>
 <div class="templediv" >
-<div ng-repeat= 'temple in temples'>
+<div ng-repeat= 'temple in temples | filter: byName'>
 
         <directive></directive>
 </div>

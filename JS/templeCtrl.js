@@ -1,9 +1,9 @@
-angular.module('app').controller('templeCtrl', function($scope, $timeout, $stateParams,  templeService, $cookies){
+angular.module('app').controller('templeCtrl', function($scope, $timeout, $stateParams,  storeService, $cookies){
 
 $scope.test = "test works";
 
 var getData = function(){
-  	templeService.getTemples().then(function(response){
+  	storeService.getTemples().then(function(response){
   		$scope.temples = response.data
   		console.log(response.data);
   	})

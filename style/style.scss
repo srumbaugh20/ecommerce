@@ -31,6 +31,7 @@
 .imageheader {
   width: 100%;
   height: 30vh;
+	float: left;
   background: url(/images/templeartheader.jpg);
   background-repeat: no-repeat;
 	background-size: cover;
@@ -40,6 +41,7 @@
 .imageheader2 {
   width: 100%;
   height: 30vh;
+	margin-right: 5%;
   background: url(/images/watercolorheader.jpg);
   background-repeat: no-repeat;
 	background-size: cover;
@@ -48,11 +50,18 @@
 
 .homeheader {
   width: 100%;
-  height: 60vh;
+  height: 40vh;
   background: url(/images/homeheader.jpg);
   background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center center;
+}
+
+@media (min-width: 1600px) {
+  .homeheader {
+		width: 100%;
+	  height: 60vh;
+  }
 }
 
 .threeimages{
@@ -96,52 +105,53 @@
 a:link {
     text-decoration: none;
     font-family: 'Montserrat';
-    color: #0c164b;
+    color: #29388A;
     font-size: 16px;
 }
 
 a:visited {
     text-decoration: none;
     font-family: 'Montserrat';
-    color: #0c164b;
+    color: #29388A;
     font-size: 16px;
 }
 
 a:hover {
     text-decoration: underline;
     font-family: 'Montserrat';
-    color: #0c164b;
+    color: #29388A;
     font-size: 16px;
 }
 
 a:active {
     text-decoration: underline;
     font-family: 'Montserrat';
-    color: #0c164b;
+    color: #29388A;
     font-size: 16px;
 }
 
 .logoheader {
-  height:150px;
+  height:110px;
   min-height: 50px;
-  max-height: 150px;
-  margin-bottom: 20px;
+  max-height: 160px;
+  margin-bottom: 40px;
   margin-right: 65px;
   background: transparent;
 }
 
 .logodiv {
-  margin-top: 30px;
-  margin-bottom: 20px;
+  margin-top: 15px;
+  margin-bottom: 40px;
   margin-left: auto;
   margin-right: auto;
-  height: 100px;
+  height: 160px;
   max-width: 100%;
 }
 
 .logoimage {
-  width : 500px;
-	height: 150px;
+  width : 450px;
+	height: 160px;
+	margin-bottom: 10px;
   margin-left: auto;
   margin-right: auto;
 	background: url(/images/logo2.jpg);
@@ -159,9 +169,10 @@ a:active {
 
 .menubar {
   font-family: 'Montserrat';
-  color: #0c164b;
+  color: #29388A;
   font-size: 18px;
   margin-left: 58px;
+	margin-top: 10px;
   padding: 0;
 
 }
@@ -191,7 +202,7 @@ ul.breadcrumb {
     padding: 5px 16px;
     list-style: none;
     background-color: #fff;
-    color: #0c164b;
+    color: #29388A;
     font-family: 'Montserrat';
     font-size: 12px;
 
@@ -200,35 +211,63 @@ ul.breadcrumb {
 /* Display list items side by side */
 ul.breadcrumb li {
     display: inline;
-    color: #0c164b;
+    color: #29388A;
 }
 
 /* Add a slash symbol (/) before/behind each list item */
 ul.breadcrumb li+li:before {
     padding: 8px;
-    color: #0c164b;
+    color: #29388A;
     content: "/\00a0";
 }
 
 /* Add a color to all links inside the list */
 ul.breadcrumb li a {
-    color: #0c164b;
+    color: #29388A;
     text-decoration: none;
 }
 
 /* Add a color on mouse-over */
 ul.breadcrumb li a:hover {
-    color: #0c164b;
+    color: #29388A;
     text-decoration: underline;
 }
 
-.scrollbox{
-	width:100%;
-	height: 100vh;
-  // margin-top: 10vh;
-	overflow-y: scroll;
-  max-width: 100%;
-  overflow-x: hidden;
+// .scrollbox{
+// 	width:100%;
+// 	height: 100vh;
+//   // margin-top: 10vh;
+// 	overflow-y: scroll;
+//   max-width: 100%;
+//   overflow-x: hidden;
+// }
+
+.orderdiv {
+  width:100%;
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+}
+
+.orderbox {
+	margin-left: 15px;
+	width: 80%;
+	max-height: auto;
+	border-color: #29388A;
+	border: solid;
+	border-style: solid;
+	border-radius: 10px;
+	padding: 15px;
+	margin-bottom: 15px;
+}
+
+.orderpic {
+	width: 43.7px;
+	height: 60px;
+	margin-right: 10px;
+	float:left;
 }
 
 .templediv {
@@ -251,6 +290,18 @@ padding-bottom: 20px;
 
 }
 
+.filter-input {
+	margin-left:40px;
+	margin-right: 100%;
+	margin-bottom: 15px;
+	font-size: 16px;
+	border:2px solid #29388A;
+	border-radius:10px;
+	height: 22px;
+	width: 230px;
+
+}
+
 .templedetails {
 width: 100%;
 height: auto;
@@ -267,7 +318,7 @@ height: auto;
 background: #fff;
 margin-left: 22px;
 padding-top: 20px;
-padding-bottom: 20px;
+padding-bottom: 10px;
 display: inline-block;
 float: left;
 
@@ -276,12 +327,12 @@ float: left;
 .orderoptions {
 	display: inline-block;
 	margin-left: 20px;
-	margin-bottom: 10px;
+	margin-bottom: 5px;
 }
 
 .itemsizeselector {
 	font-family: 'Montserrat';
-	color: #0c164b;
+	color: #29388A;
 	font-size: 16px;
 	float: left;
 	margin-right: 10px;
@@ -289,7 +340,7 @@ float: left;
 
 .quantityoption {
 	font-family: 'Montserrat';
-	color: #0c164b;
+	color: #29388A;
 	font-size: 16px;
 	float: left;
 	border: none;
@@ -313,24 +364,70 @@ margin-left: 10%;
 
 }
 
+.social2{
+	height: 50px;
+	width: auto;;
+	display: inline-block;
+	justify-content: center;
+	margin-top: 15px;
+	margin-right: 10px;;
+
+
+
+
+
+
+}
+
+.FB2 {
+	background-image: url(/images/facebooklogo.png);
+	height: 50px;
+	width: 50px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	float: left;
+}
+
+.IG2 {
+	background-image: url(/images/instagramlogo.png);
+	height: 50px;
+	width: 50px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	float: left;
+	margin-left: 10px;
+}
+
+
+.PN2 {
+	background-image: url(/images/pinterestlogo.png);
+	height: 50px;
+	width: 50px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	float: left;
+	margin-left: 10px;
+}
+
 .templeimage {
 width: 340px;
 height: 466px;
 margin-left: 20px;
 margin-top: 12px;
+margin-bottom: 5px;
 
 }
 
 .templename {
   font-family: 'Montserrat';
-  color: #0c164b;
+  color: #29388A;
   font-size: 20px;
   margin-top:10px;
   margin-left:20px;
 }
 
 .addtocartbutton {
-    background-color: #0c164b;
+    background-color: #29388A;
     border: none;
 		width: 320px;
     color: white;
@@ -340,13 +437,13 @@ margin-top: 12px;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin-top: 15px;
+    margin-top: 5px;
 		margin-left: 20px;
 }
 
 .aboutcontainer {
   font-family: 'Montserrat';
-  color: #0c164b;
+  color: #29388A;
   font-size: 16px;
   margin-left: 5%;
   margin-right: 5%;
@@ -436,3 +533,152 @@ margin-top: 12px;
 	background-position: center center;
 
 }
+
+.StripeElement {
+  background-color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  box-shadow: 0 1px 3px 0 #e6ebf1;
+  -webkit-transition: box-shadow 150ms ease;
+  transition: box-shadow 150ms ease;
+}
+
+.StripeElement--focus {
+  box-shadow: 0 1px 3px 0 #cfd7df;
+}
+
+.StripeElement--invalid {
+  border-color: #fa755a;
+}
+
+.StripeElement--webkit-autofill {
+  background-color: #fefde5 !important;
+}
+
+.btn {
+  background: #2c388f;
+  background-image: -webkit-linear-gradient(top, #2c388f, #0b1338);
+  background-image: -moz-linear-gradient(top, #2c388f, #0b1338);
+  background-image: -ms-linear-gradient(top, #2c388f, #0b1338);
+  background-image: -o-linear-gradient(top, #2c388f, #0b1338);
+  background-image: linear-gradient(to bottom, #2c388f, #0b1338);
+  -webkit-border-radius: 20;
+  -moz-border-radius: 20;
+  border-radius: 20px;
+  font-family: 'Montserrat';
+  color: #ffffff;
+  font-size: 14px;
+  padding: 5px 10px 5px 10px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #3047a1;
+  background-image: -webkit-linear-gradient(top, #3047a1, #222563);
+  background-image: -moz-linear-gradient(top, #3047a1, #222563);
+  background-image: -ms-linear-gradient(top, #3047a1, #222563);
+  background-image: -o-linear-gradient(top, #3047a1, #222563);
+  background-image: linear-gradient(to bottom, #3047a1, #222563);
+  text-decoration: none;
+	color: #edecf7;
+}
+
+img {
+  width:160px;
+  -webkit-transition:all 1s linear;
+  -moz-transition:all 1s linear;
+  transition:all 1s linear;
+  -webkit-backface-visibility: hidden;
+}
+
+img:hover {
+  -webkit-transform: scale(1.05);
+  -moz-transform: scale(1.05);
+  transform: scale(1.05);
+}
+
+
+
+
+
+*,
+*:after,
+*:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+
+.media {
+  display: inline-block;
+  position: relative;
+  vertical-align: top;
+}
+
+.media__image { display: block; }
+
+.media__body {
+  background: rgba(145, 150, 213, 0.7);
+  bottom: 0;
+  color: white;
+  font-size: 1em;
+  left: 0;
+  opacity: 0;
+  overflow: hidden;
+  padding: 3.75em 3em;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  right: 0;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+  h2{
+  }
+}
+
+.media__body:hover { opacity: 1; }
+
+.media__body:after,
+.media__body:before {
+  // border: 1px solid rgba(255, 255, 255, 0.7);
+  bottom: 1em;
+  content: '';
+  left: 1em;
+  opacity: 0;
+  position: absolute;
+  right: 1em;
+  top: 1em;
+  -webkit-transform: scale(1.5);
+  -ms-transform: scale(1.5);
+  transform: scale(1.5);
+  -webkit-transition: 0.6s 0.2s;
+  transition: 0.6s 0.2s;
+}
+
+.media__body:before {
+  border-bottom: none;
+  border-top: none;
+  left: 2em;
+  right: 2em;
+}
+
+.media__body:after {
+  border-left: none;
+  border-right: none;
+  bottom: 2em;
+  top: 2em;
+}
+
+.media__body:hover:after,
+.media__body:hover:before {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  opacity: 1;
+}
+
+.media__body h2 { margin-top: 0; }
+
+.media__body p { margin-bottom: 1.5em; }

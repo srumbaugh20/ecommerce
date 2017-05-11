@@ -8,40 +8,47 @@
 
 <div class="templedetails">
 
-<div class="itemdetails">
-    <div class="templename">
-      <p style="font-size: 35px">
-      {{singleitem.name}}
-      </p>
-      <b></b>
-      <p>
-      {{singleitem.descript}}
-      </p>
-      <b></b>
-      <p>
-      {{price}}
-      </p>
-    </div>
-    <div class="orderoptions">
+  <div class="itemdetails">
+      <div class="templename">
+        <p style="font-size: 35px; margin-bottom: 15px; line-height: 100%;">
+        {{singleitem.name}}
+        </p>
+        <b></b>
+        <p style="margin-bottom: 15px;">
+        {{singleitem.descript}}
+        </p>
+        <b></b>
+        <p>
+        {{price}}
+        </p>
+      </div>
+      <div class="orderoptions">
 
-        <select placeholder="Select Size" class="itemsizeselector" ng-options="size.size for size in sizes track by size.price" ng-model="size_option" ng-change="select_size()">
-          <option value="" disabled>Select size</option>
-        </select>
-        <form class="quantityoption">
-        Quantity:
-        <input type="number" name="points" min="0" max="100" step="1" value="1" ng-model="quantity">
-        </form>
-    </div>
-    <button class="addtocartbutton" ng-click="addtocart()">Add to cart</button>
-    <p class="templename" ng-show="showMessage" style="margin-botom:15px;">
-      {{msg}}
-    </p>
-    <div>
+          <select placeholder="Select Size" class="itemsizeselector" ng-options="size.size for size in sizes track by size.price" ng-model="size_option" ng-change="select_size()">
+            <option value="" disabled>Select size</option>
+          </select>
+          <form class="quantityoption">
+          Quantity:
+          <input type="number" name="points" min="1" max="100" step="1" value="1" ng-model="quantity">
+          </form>
+      </div>
+      <div style="height: 25px;">
+        <p class="templename" ng-show="showMessage" style="margin-bottom:15px;">
+          {{msg}}
+        </p>
+      </div>
+      <button class="addtocartbutton" ng-click="addtocart();">Add to cart</button>
+      <div style="margin-left: 15px; margin-top: 30px;">
+        <p style="margin-bottom:5px; font-family: 'Montserrat'; font-size: 16px; color: #29388A; width:100%;"><b>Share this</b></p>
+        <div class="social2">
+          <a class="FB2" href="http://www.facebook.com/sharer.php?u=https://simplesharebuttons.com"></a>
+          <!-- <a class="IG2"></a> -->
+          <a class="PN2" href="javascript:void((function()%7Bvar%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','http://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)%7D)());"></a>
+        </div>
+      </div>
+  </div>
 
-    </div>
-</div>
-
-  <img src="{{singleitem.imageurl}}" class="individualtemplesimage"/>
+    <img src="{{singleitem.imageurl}}" class="individualtemplesimage"/>
 
 
 </div>

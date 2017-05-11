@@ -1,0 +1,36 @@
+<div style="font-family: 'Montserrat'; color: #29388A; width:100%; margin-right: 15px;">
+
+  <ul class="breadcrumb">
+    <li><a ui-sref="home">Home</a></li>
+    <li><a ui-sref="orders">Orders</a></li>
+  </ul>
+
+  <div class="divider"></div>
+
+  <h2 style="margin: 15px;">ORDERS</h2>
+
+  <div class="orderdiv">
+    <div class="orderbox" ng-repeat="item in orders track by $index">
+      <div style="float: left; margin-right: 15px; margin-bottom:15px;">
+        <p><b>Order number: </b>{{item.id}}</p>
+        <p><b>Name: </b>{{item.name}}</p>
+        <p><b>Email: </b>{{item.email}}</p>
+        <p><b>Address: </b>{{item.address}}</p>
+        <p><b>Amount paid: </b>{{item.amount_paid | currency}}</p>
+
+        <button class="btn" ng-click="remove($index)">Delete</button>
+      </div>
+      <div  ng-repeat="stuff in item.cart " style="display: inline-block; width:auto; float: left; margin-right: 15px;">
+        <img src="{{stuff.image}}" class="orderpic"/>
+        <div style="float:left;">
+          <ul>
+            <li>Name: {{stuff.name}}</li>
+            <li>Size: {{stuff.size.size}}</li>
+            <li>Quantity: {{stuff.quantity}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

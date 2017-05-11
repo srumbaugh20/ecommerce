@@ -1,4 +1,4 @@
-angular.module('app').controller('templeDetailsCtrl', function($scope, $timeout, $stateParams,  templeService, $cookies){
+angular.module('app').controller('templeDetailsCtrl', function($scope, $timeout, $stateParams,  storeService, $cookies){
 
 $scope.test = "test works";
 
@@ -9,7 +9,7 @@ console.log($scope.cart);
 
 
 var getSingleData = function(){
-  templeService.getTemples().then(function(response){
+  storeService.getTemples().then(function(response){
     for (var i = 0; i < response.data.length; i++) {
       if(response.data[i].id == $stateParams.id){
         $scope.singleitem = response.data[i];
@@ -99,10 +99,5 @@ function cartCounter(){
 cartCounter();
 
 
-
-
-// $scope.$watch('click', function() {
-//         cartCounter();
-//     });
 
 });

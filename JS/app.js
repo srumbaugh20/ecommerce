@@ -1,10 +1,14 @@
-angular.module('app', ['templatescache', 'ui.router', 'ngCookies'])
-    .config(function($stateProvider, $urlRouterProvider) {
+angular.module('app', ['templatescache', 'ui.router', 'ngCookies', 'angular-stripe'])
+    .config(function($stateProvider, $urlRouterProvider, stripeProvider) {
+
+      stripeProvider.setPublishableKey('pk_test_wPfomjBcWiAe2RbDJi3iuQ7V');
+
 
         $stateProvider
             .state('home', {
                 url: '/',
                 templateUrl: './app/home.html'
+
 
             })
 
@@ -24,6 +28,12 @@ angular.module('app', ['templatescache', 'ui.router', 'ngCookies'])
             .state('contact', {
                 url: '/contact',
                 templateUrl: './app/contact.html',
+                controller: 'contactCtrl'
+            })
+
+            .state('confirmed', {
+                url: '/confirmed',
+                templateUrl: './app/confirmed.html'
             })
 
             .state('cart', {
@@ -32,17 +42,25 @@ angular.module('app', ['templatescache', 'ui.router', 'ngCookies'])
                 controller: 'cartCtrl'
             })
 
-            // .state('admin_login', {
-            //     url: '/admin/login',
-            //     templateUrl: './app/admin_login.html',
-            //     controller: 'auth'
-            // })
+            .state('checkout', {
+                url: '/checkout',
+                templateUrl: './app/checkout.html',
+                controller: 'checkoutCtrl'
+            })
+
 
 
             .state('temples', {
                 url: '/temples',
                 templateUrl: './app/temples.html',
                 controller: 'templeCtrl'
+            })
+
+            .state('orders', {
+                url: '/orders',
+                templateUrl: './app/orders.html',
+                controller: 'ordersCtrl'
+
             })
 
             .state('templedetails', {
@@ -56,6 +74,7 @@ angular.module('app', ['templatescache', 'ui.router', 'ngCookies'])
                 templateUrl: './app/watercolor-page.html',
                 controller: 'watercolorDetailsCtrl'
             })
+
 
 
         $urlRouterProvider.otherwise('/');

@@ -1,4 +1,4 @@
-angular.module('app').controller('watercolorDetailsCtrl', function($scope, $timeout, $stateParams,  templeService, $cookies){
+angular.module('app').controller('watercolorDetailsCtrl', function($scope, $timeout, $stateParams,  storeService, $cookies){
 
 $scope.test = "test works";
 
@@ -9,7 +9,7 @@ console.log($scope.cart);
 
 
 var getSingleData = function(){
-  templeService.getTemples().then(function(response){
+  storeService.getWatercolors().then(function(response){
     for (var i = 0; i < response.data.length; i++) {
       if(response.data[i].id == $stateParams.id){
         $scope.singleitem = response.data[i];
@@ -48,6 +48,7 @@ $scope.addtocart = function(){
     $scope.cart.push({
       id: $scope.singleitem.id,
       name:$scope.singleitem.name,
+      descript:$scope.singleitem.descript,
       size: $scope.size_option,
       image: $scope.singleitem.imageurl,
       quantity: $scope.quantity
@@ -66,6 +67,7 @@ $scope.addtocart = function(){
     $scope.cart.push({
       id: $scope.singleitem.id,
       name:$scope.singleitem.name,
+      descript:$scope.singleitem.descript,
       size: $scope.size_option,
       image: $scope.singleitem.imageurl,
       quantity: $scope.quantity
@@ -82,6 +84,8 @@ $scope.addedmessage();
 
 }
 
+
+
 function cartCounter(){
   var cartCount = 0;
   for (var i = 0; i < $scope.cart.length; i++) {
@@ -94,11 +98,5 @@ function cartCounter(){
 
 cartCounter();
 
-
-
-
-// $scope.$watch('click', function() {
-//         cartCounter();
-//     });
 
 });

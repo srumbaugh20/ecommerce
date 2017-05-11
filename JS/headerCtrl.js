@@ -1,4 +1,4 @@
-angular.module('app').controller('headerCtrl', function($scope, $timeout, $stateParams,  templeService, $cookies){
+angular.module('app').controller('headerCtrl', function($scope, $timeout, $stateParams,  storeService, $cookies){
 
 $scope.test = "test works";
 
