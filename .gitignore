@@ -1,3 +1,3 @@
 node_modules
 logo.jpg
-./server/stripeSecretKeys.js
+./stripeSecretKeys.js
