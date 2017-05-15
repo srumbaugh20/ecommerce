@@ -4,6 +4,7 @@ var cors = require('cors');
 var massive = require('massive');
 var path = require('path');
 var stripeKey = require('./stripeSK.js');
+var server = require('./stripeSK.js');
 var stripe = require('stripe')(stripeKey.secretKey);
 var app = module.exports = express();
 
@@ -13,7 +14,7 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, '/../dist/')));
 
 var conn = massive.connectSync({
-  connectionString : "postgres://postgres:domrep20@localhost:5432/Paintings"
+  connectionString : server.serverURL
 });
 
 app.set('db', conn);
