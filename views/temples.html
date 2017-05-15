@@ -1,8 +1,15 @@
 <!-- temple art page -->
+<div>
+  <div class="cartcontainer" ui-sref="cart" style="margin-bottom:15px;">
+    <a class="menu-links" ui-sref="cart" ng-cloak> Cart {{cartnumber}} </a>
+    <div class="cartIcon"></div>
+  </div>
 <ul class="breadcrumb">
   <li><a ui-sref="home">Home</a></li>
   <li><a ui-sref="temples">Temple Art</a></li>
 </ul>
+</div>
+
 <div class="divider"></div>
 
 <input class="filter-input" ng-model="byName" placeholder="Filter by temple name"/>

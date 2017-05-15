@@ -6,11 +6,11 @@ var stripe = require('stripe')(stripeKey.secretKey);
 module.exports = {
 
 
-create_temples: function(req, res, next){
+create_temple: function(req, res, next){
   var name = req.body.name;
   var loc = req.body.location;
   var desc = req.body.descript;
-  var img = req.body.imageURL;
+  var img = req.body.imageurl;
   var large = req.body.price_large;
   var medium = req.body.price_medium;
   var small = req.body.price_small;
@@ -22,10 +22,11 @@ create_temples: function(req, res, next){
   });
 },
 
-create_watercolors: function(req, res, next){
+create_watercolor: function(req, res, next){
+  console.log(req.body);
   var name = req.body.name;
   var desc = req.body.descript;
-  var img = req.body.imageURL;
+  var img = req.body.imageurl;
   var large = req.body.price_large;
   var medium = req.body.price_medium;
   var small = req.body.price_small;
@@ -68,7 +69,7 @@ getContact: function(req, res, next){
   });
 },
 
-update: function(req, res, next){
+updateTemple: function(req, res, next){
   var name = req.body.name;
   var descr = req.body.descript;
   var loc = req.body.location;
@@ -78,17 +79,44 @@ update: function(req, res, next){
   var small = req.body.price_small;
   var id = req.body.id;
 
-  db.update_product([name, loc, descr, img, large, medium, small, id], function(err) {
+  db.update_temple([name, loc, descr, img, large, medium, small, id], function(err) {
     console.log(img);
       res.status(202).send("updated");
 
   });
 },
 
-delete: function(req, res, next){
+updateWater: function(req, res, next){
+  var name = req.body.name;
+  var descr = req.body.descript;
+  var img = req.body.imageurl;
+  var large = req.body.price_large;
+  var medium = req.body.price_medium;
+  var small = req.body.price_small;
   var id = req.body.id;
-  db.delete_product([id], function(err) {
+
+  db.update_watercolors([name, descr, img, large, medium, small, id], function(err) {
+    console.log(name);
+      res.status(202).send("item updated");
+
+  });
+},
+
+deletetemples: function(req, res, next){
+  var id = req.params.id;
+  console.log("sdfsdfdsf", id);
+  db.delete_temples([id], function(err) {
       res.status(200).send('Item deleted');
+  });
+},
+
+deletewatercolor: function(req, res, next){
+  var id = req.params.id;
+  console.log("asdfasfddsa", id);
+  db.delete_watercolors([id], function(err) {
+      console.log('asdfasfd');
+      res.status(200).send('Item deleted')
+
   });
 },
 

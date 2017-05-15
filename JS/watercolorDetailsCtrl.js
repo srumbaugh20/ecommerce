@@ -7,6 +7,19 @@ $scope.cartnumber = {num: 0};
 $scope.cart = $cookies.getObject('cart') || [];
 console.log($scope.cart);
 
+var cartCounter = function (){
+  var cartCount = {
+    num: 0
+  };
+  for (var i = 0; i < $scope.cart.length; i++) {
+    cartCount.num += $scope.cart[i].quantity;
+  }
+  $scope.cartnumber = cartCount.num;
+  console.log("cart count", $scope.cartnumber);
+}
+
+cartCounter();
+
 
 var getSingleData = function(){
   storeService.getWatercolors().then(function(response){
@@ -53,7 +66,6 @@ $scope.addtocart = function(){
       image: $scope.singleitem.imageurl,
       quantity: $scope.quantity
   });
-  cartCounter();
 } else {
   var flag = false;
   for (var i = 0; i < $scope.cart.length; i++) {
@@ -62,7 +74,6 @@ $scope.addtocart = function(){
       flag = true;
     }
   }
-  cartCounter();
   if (!flag){
     $scope.cart.push({
       id: $scope.singleitem.id,
@@ -72,7 +83,6 @@ $scope.addtocart = function(){
       image: $scope.singleitem.imageurl,
       quantity: $scope.quantity
     })
-    cartCounter();
   }
 }
 
@@ -85,18 +95,6 @@ $scope.addedmessage();
 }
 
 
-
-function cartCounter(){
-  var cartCount = 0;
-  for (var i = 0; i < $scope.cart.length; i++) {
-    cartCount += $scope.cart[i].quantity;
-    console.log("for loop", cartCount);
-  }
-  $scope.cartnumber.num = cartCount
-  console.log("cart count", $scope.cartnumber);
-}
-
-cartCounter();
 
 
 });

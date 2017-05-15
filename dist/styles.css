@@ -108,7 +108,8 @@ input[type="submit"]:hover {
 
 .divider {
   border-top: 1px solid #f2f2f2;
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+  margin-top: 15px; }
 
 .imageheadercontainer {
   width: 100%;
@@ -255,7 +256,8 @@ a:active {
   float: right;
   display: block;
   position: relative;
-  margin-right: 3%; }
+  margin-right: 3%;
+  margin-bottom: 60px; }
 
 .cartIcon {
   width: 28px;

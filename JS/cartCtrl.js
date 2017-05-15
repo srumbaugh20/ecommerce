@@ -2,10 +2,22 @@ angular.module('app').controller('cartCtrl', function($scope, $timeout, $statePa
 
 $scope.test = "test works";
 
-$scope.cartnumber = {num: 0};
 
 $scope.cart = $cookies.getObject('cart') || [];
 console.log($scope.cart);
+
+$scope.cartCounter = function (){
+  var cartCount = {
+    num: 0
+  };
+  for (var i = 0; i < $scope.cart.length; i++) {
+    cartCount.num += $scope.cart[i].quantity;
+  }
+  $scope.cartnumber = cartCount.num;
+  console.log("cart count", $scope.cartnumber);
+}
+
+$scope.cartCounter();
 
 
 $scope.updatedmessage = function() {
@@ -15,23 +27,6 @@ $scope.updatedmessage = function() {
           $scope.showMessage = false;
        }, 2000);
     };
-
-
-function cartCounter(){
-  var cartCount = {
-    num: 0
-  };
-  for (var i = 0; i < $scope.cart.length; i++) {
-    cartCount.num += $scope.cart[i].quantity;
-    console.log("for loop", cartCount);
-  }
-  $scope.cartnumber = cartCount.num
-
-  console.log("cart count", $scope.cartnumber);
-}
-
-cartCounter();
-
 
 var gettotal = function (){
   var grandtotal = {
@@ -46,22 +41,14 @@ var gettotal = function (){
 
 gettotal();
 
+
 $scope.quantityupdate = function(index){
   console.log($scope.cart[index].quantity);
   console.log($scope.cart);
   $cookies.putObject('cart', $scope.cart);
   gettotal();
-  cartCounter();
-  $scope.$apply();
   $scope.updatedmessage();
 };
-
-// $scope.remove = function(index){
-//   if (index > -1) {
-//       $scope.cart.splice(index, 1);
-//     }
-//     $cookies.putObject('cart', $scope.cart);
-// }
 
 
 

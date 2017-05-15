@@ -31,9 +31,6 @@ angular.module('app')
           method: 'DELETE',
           url: '/api/deleteorder/'+ id
 
-          // data: {
-          //   orderid: id
-          // }
         })
       }
 
@@ -52,6 +49,96 @@ angular.module('app')
             zipcode: payment.zipcode,
             email: payment.email,
             cart: payment.cart
+          }
+        })
+      }
+
+      this.updateWater = function (water){
+        console.log('>>>>WATER ', water);
+        return $http({
+          method: 'PUT',
+          url: '/api/updatewater',
+          data: {
+            id: water.id,
+            imageurl: water.imageurl,
+            name: water.name,
+            descript: water.descript,
+            price_large: water.price_large,
+            price_medium: water.price_medium,
+            price_small: water.price_small
+          }
+        })
+      }
+
+      this.updateTemple = function (temple){
+        console.log('>>>>Temple ', temple);
+        return $http({
+          method: 'PUT',
+          url: '/api/updatetemple',
+          data: {
+            id: temple.id,
+            imageurl: temple.imageurl,
+            name: temple.name,
+            location: temple.location,
+            descript: temple.descript,
+            price_large: temple.price_large,
+            price_medium: temple.price_medium,
+            price_small: temple.price_small
+          }
+        })
+      }
+
+      this.deleteTemple = function (temple){
+        console.log(temple);
+
+        return $http({
+          method: 'DELETE',
+          url: '/deletetemples/' + temple.id,
+          data: {
+            id: temple.id,
+          }
+        })
+      }
+
+      this.deletewatercolor = function (water){
+        console.log(water);
+
+        return $http({
+          method: 'DELETE',
+          url: '/deletewatercolor/' + water.id,
+          data: {
+            id: water.id,
+          }
+        })
+      }
+
+      this.addWatercolor = function (water){
+        return $http({
+          method: 'Post',
+          url: '/createwatercolor',
+          data: {
+            imageurl: water.imageurl,
+            name: water.name,
+            descript: water.descript,
+            price_large: water.price_large,
+            price_medium: water.price_medium,
+            price_small: water.price_small
+          }
+        })
+      }
+
+      this.addTemple = function (temple){
+        return $http({
+          method: 'Post',
+          url: '/createtemple',
+          data: {
+            imageurl: temple.imageurl,
+            name: temple.name,
+            location: temple.location,
+            descript: temple.descript,
+            price_large: temple.price_large,
+            price_medium: temple.price_medium,
+            price_small: temple.price_small
           }
         })
       }

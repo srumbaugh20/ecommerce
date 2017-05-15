@@ -1,0 +1,130 @@
+<div style="font-family: 'Montserrat'; color: #29388A;">
+
+
+<ul class="breadcrumb">
+  <li><a ui-sref="home">Home</a></li>
+  <li><a ui-sref="orders">Orders</a></li>
+  <li><a ui-sref="products">Products</a></li>
+</ul>
+<div class="divider"></div>
+<h2 style="margin-left:15px;">Products</h2>
+<br/>
+<br/>
+<h4 style="margin-left:15px;">Watercolors</h4>
+<div style="margin-left:15px; margin-right: 15px;">
+    <table class="table">
+        <tr>
+            <th>Id</th>
+            <th>Image</th>
+            <th>Image Link</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price-Large</th>
+            <th>Price-Medium</th>
+            <th>Price-Small</th>
+            <th></th>
+        </tr>
+        <tr ng:repeat="item in watercolors track by $index">
+          <td>{{item.id}}</td>
+          <td><img src="{{item.imageurl}}" style="width:60px; height:82px"/></td>
+          <td><input type="text" name="name" value="{{item.imageurl}}"></td>
+          <td><input ng-model="watercolors[$index].name" type="text" name="name" value="{{item.name}}"></td>
+          <td><textarea ng-model="watercolors[$index].descript" name="description" cols="20" rows="5">{{item.descript}}</textarea></td>
+          <td><input ng-model="watercolors[$index].price_large" type="text" name="name" value="{{item.price_large}}"></td>
+          <td><input ng-model="watercolors[$index].price_medium" type="text" name="name" value="{{item.price_medium}}"></td>
+          <td><input ng-model="watercolors[$index].price_small" type="text" name="name" value="{{item.price_small}}"></td>
+          <td>
+            <div>
+              <button class="btn btn-primary" ng-click="updateWatercolor($index)" style="margin-bottom: 4px;" >Update</button>
+              <button class="btn btn-primary" ng-click="deleteWatercolor($index)" style="margin-left: 4px;">Delete</button>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <br />
+      <h4>Add Watercolor Item</h4>
+      <table class="table">
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Image Link</th>
+          <th>Price-Large</th>
+          <th>Price-Medium</th>
+          <th>Price-Small</th>
+          <th></th>
+        </tr>
+        <tr>
+          <td><input style="width: 120px;" ng-model="addWname" type="text" placeholder="Item name" require></td>
+          <td><textarea  ng-model="addWdes" placeholder="Item description" cols="20" rows="5" require></textarea></td>
+          <td><input style="width: 120px;" ng-model="addWimage" type="text" placeholder="Item image URL" require></td>
+          <td><input style="width: 100px; margin-top: 15px;" ng-model="addWlarge" type="number"  placeholder="Price large" require></td>
+          <td><input style="width: 120px; margin-top: 15px;" ng-model="addWmedium" type="number"  placeholder="Price medium" require></td>
+          <td><input style="width: 100px; margin-top: 15px;" ng-model="addWsmall" type="number"  placeholder="Price small" require></td>
+          <td><button class="btn btn-primary" ng-click="addWatercolor()" style="margin-top: 10px;">Add</button></td>
+        </tr>
+    </table>
+
+</div>
+<br/>
+<br/>
+<h4 style="margin-left:15px;">Temples</h4>
+<input class="filter-input" ng-model="byName" placeholder="Filter by temple name"/>
+<div style="margin-left:15px; margin-right: 15px;">
+    <table class="table">
+        <tr>
+            <th>Id</th>
+            <th>Image</th>
+            <th>Image Link</th>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Description</th>
+            <th>Price-Large</th>
+            <th>Price-Medium</th>
+            <th>Price-Small</th>
+            <th></th>
+        </tr>
+        <tr ng-repeat="item in temples | filter: byName track by $index">
+          <td>{{item.id}}</td>
+          <td><img src="{{item.imageurl}}" style="width:60px; height:82px"/></td>
+          <td><input ng-model="temples[$index].imageurl" type="text" name="name" value="{{item.imageurl}}"></td>
+          <td><input ng-model="temples[$index].name" onchange=""type="text" name="name" value="{{item.name}}"></td>
+          <td><input ng-model="temples[$index].location" type="text" name="name" value="{{item.location}}"></td>
+          <td><textarea ng-model="temples[$index].descript" name="description" cols="20" rows="5">{{item.descript}}</textarea></td>
+          <td><input ng-model="temples[$index].price_large" type="text" name="name" value="{{item.price_large}}"></td>
+          <td><input ng-model="temples[$index].price_medium" type="text" name="name" value="{{item.price_medium}}"></td>
+          <td><input ng-model="temples[$index].price_small" type="text" name="name" value="{{item.price_small}}"></td>
+          <td>
+            <div>
+              <button class="btn btn-primary" style="margin-bottom: 4px" ng-click="updateTemple($index)">Update</button>
+              <button class="btn btn-primary" ng-click="deleteTemple($index)" style="margin-left: 4px;">Delete</button>
+            </div>
+          </td>
+        </tr>
+    </table>
+    <br />
+    <h4>Add Watercolor Item</h4>
+    <table class="table">
+      <tr>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Description</th>
+        <th>Image Link</th>
+        <th>Price-Large</th>
+        <th>Price-Medium</th>
+        <th>Price-Small</th>
+        <th></th>
+      </tr>
+      <tr>
+        <td><input style="width: 120px;" ng-model="addTname" type="text" placeholder="Item name" require></td>
+        <td><input style="width: 120px;" ng-model="addTlocation" type="text" placeholder="Location" require></td>
+        <td><textarea  ng-model="addTdes" placeholder="Item description" cols="20" rows="5" require></textarea></td>
+        <td><input style="width: 120px;" ng-model="addTimage" type="text" placeholder="Item image URL" require></td>
+        <td><input style="width: 100px; margin-top: 15px;" ng-model="addTlarge" type="number"  placeholder="Price large" require></td>
+        <td><input style="width: 120px; margin-top: 15px;" ng-model="addTmedium" type="number"  placeholder="Price medium" require></td>
+        <td><input style="width: 100px; margin-top: 15px;" ng-model="addTsmall" type="number"  placeholder="Price small" require></td>
+        <td><button class="btn btn-primary" ng-click="addTemple()" style="margin-top: 10px;">Add</button></td>
+      </tr>
+  </table>
+
+</div>
+</div>

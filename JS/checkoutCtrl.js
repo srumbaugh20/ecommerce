@@ -11,29 +11,19 @@ $scope.getcart = function(){
   return $scope.cart
 }
 
-
-// $scope.updatedmessage = function() {
-//        $scope.msg="Cart updated!";
-//        $scope.showMessage = true;
-//        $timeout(function(){
-//           $scope.showMessage = false;
-//        }, 2000);
-//     };
-
-
-function cartCounter(){
+$scope.cartCounter = function (){
   var cartCount = {
     num: 0
   };
   for (var i = 0; i < $scope.cart.length; i++) {
     cartCount.num += $scope.cart[i].quantity;
-    console.log("for loop", cartCount);
   }
-  $scope.cartnumber = cartCount.num
+  $scope.cartnumber = cartCount.num;
   console.log("cart count", $scope.cartnumber);
 }
 
-cartCounter();
+$scope.cartCounter();
+
 
 
 var gettotal = function (){
@@ -83,7 +73,6 @@ $scope.charge = function(){
 
 
 }
-
 
 
 

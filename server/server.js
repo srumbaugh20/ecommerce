@@ -22,15 +22,17 @@ var db = app.get('db');
 
 
 
-app.post("/create/temples", ctrl.create_temples);
-app.post("/create/watercolors", ctrl.create_watercolors);
+app.post("/createtemple", ctrl.create_temple);
+app.post("/createwatercolor", ctrl.create_watercolor);
 app.post("/api/payment", ctrl.processPayment);
 app.get('/get/temples', ctrl.getTemples);
 app.get('/get/orders', ctrl.getOrders);
 app.get('/get/watercolors', ctrl.getWatercolors);
 app.get('/get/contact', ctrl.getContact);
-app.put('/update', ctrl.update);
-app.delete('/delete', ctrl.delete);
+app.put('/api/updatewater', ctrl.updateWater);
+app.put('/api/updatetemple', ctrl.updateTemple);
+app.delete('/deletetemples/:id', ctrl.deletetemples);
+app.delete('/deletewatercolor/:id', ctrl.deletewatercolor);
 app.delete('/api/deleteorder/:id', ctrl.deleteorder);
 
 

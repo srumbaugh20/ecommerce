@@ -1,4 +1,4 @@
-angular.module('app', ['templatescache', 'ui.router', 'ngCookies', 'angular-stripe'])
+angular.module('app', ['templatescache', 'ui.router', 'ngCookies', 'angular-stripe', 'ngRoute'])
     .config(function($stateProvider, $urlRouterProvider, stripeProvider) {
 
       stripeProvider.setPublishableKey('pk_test_wPfomjBcWiAe2RbDJi3iuQ7V');
@@ -7,15 +7,14 @@ angular.module('app', ['templatescache', 'ui.router', 'ngCookies', 'angular-stri
         $stateProvider
             .state('home', {
                 url: '/',
-                templateUrl: './app/home.html'
-
+                templateUrl: './app/home.html',
+                controller: 'homeCtrl'
 
             })
 
             .state('about', {
                 url: '/about',
                 templateUrl: './app/about.html'
-
             })
 
             .state('watercolors', {
@@ -63,6 +62,13 @@ angular.module('app', ['templatescache', 'ui.router', 'ngCookies', 'angular-stri
 
             })
 
+            .state('products', {
+                url: '/products',
+                templateUrl: './app/products.html',
+                controller: 'productCtrl'
+
+            })
+
             .state('templedetails', {
                 url: '/templedetails/:id',
                 templateUrl: './app/temple-page.html',
@@ -78,4 +84,4 @@ angular.module('app', ['templatescache', 'ui.router', 'ngCookies', 'angular-stri
 
 
         $urlRouterProvider.otherwise('/');
-});;
+});
