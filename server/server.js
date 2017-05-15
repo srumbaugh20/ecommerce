@@ -3,7 +3,7 @@ var bodyParser = require('body-parser');
 var cors = require('cors');
 var massive = require('massive');
 var path = require('path');
-var stripeKey = require('./stripeSecretKeys.js');
+var stripeKey = require('./stripeSK.js');
 var stripe = require('stripe')(stripeKey.secretKey);
 var app = module.exports = express();
 
