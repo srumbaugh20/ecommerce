@@ -1,24 +1,10 @@
-angular.module('app').controller('cartCtrl', function($scope, $timeout, $stateParams,  storeService, $cookies){
+angular.module('app').controller('cartCtrl', function($scope, $timeout, $stateParams,  storeService, $cookies, $state){
 
 $scope.test = "test works";
 
 
 $scope.cart = $cookies.getObject('cart') || [];
 console.log($scope.cart);
-
-$scope.cartCounter = function (){
-  var cartCount = {
-    num: 0
-  };
-  for (var i = 0; i < $scope.cart.length; i++) {
-    cartCount.num += $scope.cart[i].quantity;
-  }
-  $scope.cartnumber = cartCount.num;
-  console.log("cart count", $scope.cartnumber);
-}
-
-$scope.cartCounter();
-
 
 $scope.updatedmessage = function() {
        $scope.msg="Cart updated!";
@@ -30,16 +16,36 @@ $scope.updatedmessage = function() {
 
 var gettotal = function (){
   var grandtotal = {
-    total: 3
+    total: 0
   }
   for (var i = 0; i < $scope.cart.length; i++) {
     grandtotal.total += ($scope.cart[i].quantity * $scope.cart[i].size.price)
   }
-  $scope.grandtotal = grandtotal.total
 
+  $scope.grandtotal = grandtotal.total
 }
 
 gettotal();
+
+$timeout(function() {
+            console.log($scope.grandtotal++);
+        }, 500);
+
+var shipCost = function(){
+  var ship = 0;
+  if($scope.grandtotal === 0){
+    ship = 0
+  }else if ($scope.grandtotal > 0 && $scope.grandtotal < 47){
+    ship = 6
+  } else if ($scope.grandtotal > 47){
+    ship = 0
+  }
+  $scope.shipping = ship;
+}
+
+shipCost();
+
+$scope.superTotal = $scope.shipping + $scope.grandtotal;
 
 
 $scope.quantityupdate = function(index){
@@ -48,6 +54,9 @@ $scope.quantityupdate = function(index){
   $cookies.putObject('cart', $scope.cart);
   gettotal();
   $scope.updatedmessage();
+  $timeout(function(){
+     $state.transitionTo($state.current, {id:$stateParams.id}, { reload: true});
+  }, 1000);
 };
 
 
@@ -68,8 +77,12 @@ function(){
     }
   $cookies.putObject('cart', $scope.cart);
   $scope.$apply();
-  swal("Deleted!", "That order has been deleted.", "success");
+  swal("Deleted!", "That item has been deleted.", "success");
+  $timeout(function(){
+     $state.transitionTo($state.current, {id:$stateParams.id}, { reload: true});
+  }, 1000);
 });
+
 }
 
 

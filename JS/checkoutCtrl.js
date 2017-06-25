@@ -11,33 +11,39 @@ $scope.getcart = function(){
   return $scope.cart
 }
 
-$scope.cartCounter = function (){
-  var cartCount = {
-    num: 0
-  };
-  for (var i = 0; i < $scope.cart.length; i++) {
-    cartCount.num += $scope.cart[i].quantity;
-  }
-  $scope.cartnumber = cartCount.num;
-  console.log("cart count", $scope.cartnumber);
-}
-
-$scope.cartCounter();
-
-
 
 var gettotal = function (){
   var grandtotal = {
-    total: 3
+    total: 0
   }
   for (var i = 0; i < $scope.cart.length; i++) {
     grandtotal.total += ($scope.cart[i].quantity * $scope.cart[i].size.price)
   }
-  $scope.grandtotal = grandtotal.total
 
+  $scope.grandtotal = grandtotal.total
 }
 
 gettotal();
+
+$timeout(function() {
+            console.log($scope.grandtotal++);
+        }, 500);
+
+var shipCost = function(){
+  var ship = 0;
+  if($scope.grandtotal === 0){
+    ship = 0
+  }else if ($scope.grandtotal > 0 && $scope.grandtotal < 47){
+    ship = 6
+  } else if ($scope.grandtotal > 47){
+    ship = 0
+  }
+  $scope.shipping = ship;
+}
+
+shipCost();
+
+$scope.superTotal = $scope.shipping + $scope.grandtotal;
 
 $scope.emptycart = function(){
   $cookies.remove('cart');

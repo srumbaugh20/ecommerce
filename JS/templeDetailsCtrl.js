@@ -1,24 +1,8 @@
-angular.module('app').controller('templeDetailsCtrl', function($scope, $timeout, $stateParams,  storeService, $cookies){
+angular.module('app').controller('templeDetailsCtrl', function($scope, $timeout, $stateParams,  storeService, $cookies, $state, $location){
 
 $scope.test = "test works";
 
 $scope.cartnumber = {num: 0};
-
-$scope.cart = $cookies.getObject('cart') || [];
-console.log($scope.cart);
-
-var cartCounter = function (){
-  var cartCount = {
-    num: 0
-  };
-  for (var i = 0; i < $scope.cart.length; i++) {
-    cartCount.num += $scope.cart[i].quantity;
-  }
-  $scope.cartnumber = cartCount.num;
-  console.log("cart count", $scope.cartnumber);
-}
-
-cartCounter();
 
 
 var getSingleData = function(){
@@ -38,7 +22,8 @@ getSingleData();
 $scope.sizes = [
   {size: 'Large-11"x14"', price: 24},
   {size: 'Medium-8"x10"', price: 18},
-  {size: 'Small-4"x6"', price: 12}
+  {size: 'Small-5"x7"', price: 12},
+  {size: 'Card Size-4"x6"', price: 10}
 ];
 
 
@@ -55,6 +40,9 @@ $scope.addedmessage = function() {
           $scope.showMessage = false;
        }, 2000);
     };
+
+
+
 
 $scope.addtocart = function(){
   if ($scope.cart.length === 0) {
@@ -91,6 +79,9 @@ $scope.addtocart = function(){
 $cookies.putObject('cart', $scope.cart);
 console.log($scope.cart);
 $scope.addedmessage();
+$timeout(function(){
+   $state.transitionTo($state.current, {id:$stateParams.id}, { reload: true});
+}, 1000);
 
 }
 

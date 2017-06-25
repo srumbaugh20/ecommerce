@@ -8,66 +8,82 @@ angular.module('app', ['templatescache', 'ui.router', 'ngCookies', 'angular-stri
                         url: '/',
                         templateUrl: './app/home.html',
                         controller: 'homeCtrl'
+                        // authenticate: false
 
             }).state('about', {
                         url: '/about',
                         templateUrl: './app/about.html'
+                        // authenticate: false
             }).state('watercolors', {
                         url: '/watercolors',
                         templateUrl: './app/watercolors.html',
                         controller: 'watercolorsCtrl'
+                        // authenticate: false
 
             }).state('contact', {
                         url: '/contact',
                         templateUrl: './app/contact.html',
                         controller: 'contactCtrl'
+                        // authenticate: false
             }).state('confirmed', {
                         url: '/confirmed',
                         templateUrl: './app/confirmed.html'
+                        // authenticate: false
             }).state('cart', {
                         url: '/cart',
                         templateUrl: './app/cart.html',
                         controller: 'cartCtrl'
+                        // authenticate: false
             }).state('checkout', {
                         url: '/checkout',
                         templateUrl: './app/checkout.html',
                         controller: 'checkoutCtrl'
+                        // authenticate: false
             }).state('temples', {
                         url: '/temples',
                         templateUrl: './app/temples.html',
                         controller: 'templeCtrl'
+                        // authenticate: false
             }).state('orders', {
                         url: '/orders',
                         templateUrl: './app/orders.html',
                         controller: 'ordersCtrl'
+                        // authenticate: true
 
             }).state('products', {
                         url: '/products',
                         templateUrl: './app/products.html',
                         controller: 'productCtrl'
+                        // authenticate: true
 
             }).state('templedetails', {
                         url: '/templedetails/:id',
                         templateUrl: './app/temple-page.html',
                         controller: 'templeDetailsCtrl'
+
             }).state('watercolordetails', {
                         url: '/watercolordetails/:id',
                         templateUrl: './app/watercolor-page.html',
                         controller: 'watercolorDetailsCtrl'
+
+            }).state('login', {
+                        url: '/login',
+                        templateUrl: './app/login.html',
+                        controller: 'loginCtrl'
+
             });
 
             $urlRouterProvider.otherwise('/');
 });
 'use strict';
 
-angular.module('app').controller('cartCtrl', function ($scope, $timeout, $stateParams, storeService, $cookies) {
+angular.module('app').controller('cartCountCtrl', function ($scope, $timeout, $stateParams, storeService, $cookies) {
 
-  $scope.test = "test works";
+  $scope.testing = "test works";
 
   $scope.cart = $cookies.getObject('cart') || [];
-  console.log($scope.cart);
 
-  $scope.cartCounter = function () {
+  var cartCounter = function cartCounter() {
     var cartCount = {
       num: 0
     };
@@ -78,7 +94,16 @@ angular.module('app').controller('cartCtrl', function ($scope, $timeout, $stateP
     console.log("cart count", $scope.cartnumber);
   };
 
-  $scope.cartCounter();
+  cartCounter();
+});
+'use strict';
+
+angular.module('app').controller('cartCtrl', function ($scope, $timeout, $stateParams, storeService, $cookies, $state) {
+
+  $scope.test = "test works";
+
+  $scope.cart = $cookies.getObject('cart') || [];
+  console.log($scope.cart);
 
   $scope.updatedmessage = function () {
     $scope.msg = "Cart updated!";
@@ -90,15 +115,36 @@ angular.module('app').controller('cartCtrl', function ($scope, $timeout, $stateP
 
   var gettotal = function gettotal() {
     var grandtotal = {
-      total: 3
+      total: 0
     };
     for (var i = 0; i < $scope.cart.length; i++) {
       grandtotal.total += $scope.cart[i].quantity * $scope.cart[i].size.price;
     }
+
     $scope.grandtotal = grandtotal.total;
   };
 
   gettotal();
+
+  $timeout(function () {
+    console.log($scope.grandtotal++);
+  }, 500);
+
+  var shipCost = function shipCost() {
+    var ship = 0;
+    if ($scope.grandtotal === 0) {
+      ship = 0;
+    } else if ($scope.grandtotal > 0 && $scope.grandtotal < 47) {
+      ship = 6;
+    } else if ($scope.grandtotal > 47) {
+      ship = 0;
+    }
+    $scope.shipping = ship;
+  };
+
+  shipCost();
+
+  $scope.superTotal = $scope.shipping + $scope.grandtotal;
 
   $scope.quantityupdate = function (index) {
     console.log($scope.cart[index].quantity);
@@ -106,6 +152,9 @@ angular.module('app').controller('cartCtrl', function ($scope, $timeout, $stateP
     $cookies.putObject('cart', $scope.cart);
     gettotal();
     $scope.updatedmessage();
+    $timeout(function () {
+      $state.transitionTo($state.current, { id: $stateParams.id }, { reload: true });
+    }, 1000);
   };
 
   $scope.remove = function ($index) {
@@ -123,7 +172,10 @@ angular.module('app').controller('cartCtrl', function ($scope, $timeout, $stateP
       }
       $cookies.putObject('cart', $scope.cart);
       $scope.$apply();
-      swal("Deleted!", "That order has been deleted.", "success");
+      swal("Deleted!", "That item has been deleted.", "success");
+      $timeout(function () {
+        $state.transitionTo($state.current, { id: $stateParams.id }, { reload: true });
+      }, 1000);
     });
   };
 });
@@ -135,6 +187,33 @@ angular.module('app').directive('cart-dir', function () {
     templateUrl: './app/cart_button.html',
 
     restrict: 'E'
+
+  };
+});
+'use strict';
+
+angular.module('app').directive('cartdirective', function () {
+  //
+  return {
+    templateUrl: './app/cartNumber.html',
+    restrict: 'AE',
+    controller: function controller($scope, $timeout, $stateParams, storeService, $cookies) {
+
+      $scope.cart = $cookies.getObject('cart') || [];
+
+      var cartCounter = function cartCounter() {
+        var cartCount = {
+          num: 0
+        };
+        for (var i = 0; i < $scope.cart.length; i++) {
+          cartCount.num += $scope.cart[i].quantity;
+        }
+        $scope.cartnumber = cartCount.num;
+        console.log("cart count", $scope.cartnumber);
+      };
+
+      cartCounter();
+    }
 
   };
 });
@@ -153,30 +232,38 @@ angular.module('app').controller('checkoutCtrl', function ($scope, $timeout, $st
     return $scope.cart;
   };
 
-  $scope.cartCounter = function () {
-    var cartCount = {
-      num: 0
-    };
-    for (var i = 0; i < $scope.cart.length; i++) {
-      cartCount.num += $scope.cart[i].quantity;
-    }
-    $scope.cartnumber = cartCount.num;
-    console.log("cart count", $scope.cartnumber);
-  };
-
-  $scope.cartCounter();
-
   var gettotal = function gettotal() {
     var grandtotal = {
-      total: 3
+      total: 0
     };
     for (var i = 0; i < $scope.cart.length; i++) {
       grandtotal.total += $scope.cart[i].quantity * $scope.cart[i].size.price;
     }
+
     $scope.grandtotal = grandtotal.total;
   };
 
   gettotal();
+
+  $timeout(function () {
+    console.log($scope.grandtotal++);
+  }, 500);
+
+  var shipCost = function shipCost() {
+    var ship = 0;
+    if ($scope.grandtotal === 0) {
+      ship = 0;
+    } else if ($scope.grandtotal > 0 && $scope.grandtotal < 47) {
+      ship = 6;
+    } else if ($scope.grandtotal > 47) {
+      ship = 0;
+    }
+    $scope.shipping = ship;
+  };
+
+  shipCost();
+
+  $scope.superTotal = $scope.shipping + $scope.grandtotal;
 
   $scope.emptycart = function () {
     $cookies.remove('cart');
@@ -244,19 +331,6 @@ angular.module('app').controller('headerCtrl', function ($scope, $timeout, $stat
   $scope.test = "test works";
 
   $scope.cart = $cookies.getObject('cart') || [];
-
-  var cartCounter = function cartCounter() {
-    var cartCount = {
-      num: 0
-    };
-    for (var i = 0; i < $scope.cart.length; i++) {
-      cartCount.num += $scope.cart[i].quantity;
-    }
-    $scope.cartnumber = cartCount.num;
-    console.log("cart count", $scope.cartnumber);
-  };
-
-  cartCounter();
 });
 'use strict';
 
@@ -386,7 +460,8 @@ angular.module('app').controller('productCtrl', function ($scope, $timeout, $sta
         descript: $scope.watercolors[$index].descript,
         price_large: $scope.watercolors[$index].price_large,
         price_medium: $scope.watercolors[$index].price_medium,
-        price_small: $scope.watercolors[$index].price_small
+        price_small: $scope.watercolors[$index].price_small,
+        card_size: $scope.watercolors[$index].card_size
       };
 
       console.log(water);
@@ -415,7 +490,8 @@ angular.module('app').controller('productCtrl', function ($scope, $timeout, $sta
         descript: $scope.temples[$index].descript,
         price_large: $scope.temples[$index].price_large,
         price_medium: $scope.temples[$index].price_medium,
-        price_small: $scope.temples[$index].price_small
+        price_small: $scope.temples[$index].price_small,
+        card_size: $scope.temples[$index].card_size
       };
 
       console.log(temple);
@@ -486,7 +562,8 @@ angular.module('app').controller('productCtrl', function ($scope, $timeout, $sta
         descript: $scope.addWdes,
         price_large: $scope.addWlarge,
         price_medium: $scope.addWmedium,
-        price_small: $scope.addWsmall
+        price_small: $scope.addWsmall,
+        card_size: $scope.addWcard
       };
 
       console.log(water);
@@ -513,7 +590,8 @@ angular.module('app').controller('productCtrl', function ($scope, $timeout, $sta
         descript: $scope.addTdes,
         price_large: $scope.addTlarge,
         price_medium: $scope.addTmedium,
-        price_small: $scope.addTsmall
+        price_small: $scope.addTsmall,
+        card_size: $scope.addTcard
       };
 
       console.log(temple);
@@ -590,7 +668,8 @@ angular.module('app').service('storeService', function ($http) {
         descript: water.descript,
         price_large: water.price_large,
         price_medium: water.price_medium,
-        price_small: water.price_small
+        price_small: water.price_small,
+        card_size: water.card_size
       }
     });
   };
@@ -608,7 +687,8 @@ angular.module('app').service('storeService', function ($http) {
         descript: temple.descript,
         price_large: temple.price_large,
         price_medium: temple.price_medium,
-        price_small: temple.price_small
+        price_small: temple.price_small,
+        card_size: temple.card_size
       }
     });
   };
@@ -647,7 +727,8 @@ angular.module('app').service('storeService', function ($http) {
         descript: water.descript,
         price_large: water.price_large,
         price_medium: water.price_medium,
-        price_small: water.price_small
+        price_small: water.price_small,
+        card_size: water.card_size
       }
     });
   };
@@ -663,7 +744,8 @@ angular.module('app').service('storeService', function ($http) {
         descript: temple.descript,
         price_large: temple.price_large,
         price_medium: temple.price_medium,
-        price_small: temple.price_small
+        price_small: temple.price_small,
+        card_size: temple.card_size
       }
     });
   };
@@ -676,19 +758,6 @@ angular.module('app').controller('templeCtrl', function ($scope, $timeout, $stat
 
   $scope.cart = $cookies.getObject('cart') || [];
 
-  var cartCounter = function cartCounter() {
-    var cartCount = {
-      num: 0
-    };
-    for (var i = 0; i < $scope.cart.length; i++) {
-      cartCount.num += $scope.cart[i].quantity;
-    }
-    $scope.cartnumber = cartCount.num;
-    console.log("cart count", $scope.cartnumber);
-  };
-
-  cartCounter();
-
   var getData = function getData() {
     storeService.getTemples().then(function (response) {
       $scope.temples = response.data;
@@ -700,27 +769,11 @@ angular.module('app').controller('templeCtrl', function ($scope, $timeout, $stat
 });
 'use strict';
 
-angular.module('app').controller('templeDetailsCtrl', function ($scope, $timeout, $stateParams, storeService, $cookies) {
+angular.module('app').controller('templeDetailsCtrl', function ($scope, $timeout, $stateParams, storeService, $cookies, $state, $location) {
 
   $scope.test = "test works";
 
   $scope.cartnumber = { num: 0 };
-
-  $scope.cart = $cookies.getObject('cart') || [];
-  console.log($scope.cart);
-
-  var cartCounter = function cartCounter() {
-    var cartCount = {
-      num: 0
-    };
-    for (var i = 0; i < $scope.cart.length; i++) {
-      cartCount.num += $scope.cart[i].quantity;
-    }
-    $scope.cartnumber = cartCount.num;
-    console.log("cart count", $scope.cartnumber);
-  };
-
-  cartCounter();
 
   var getSingleData = function getSingleData() {
     storeService.getTemples().then(function (response) {
@@ -734,7 +787,7 @@ angular.module('app').controller('templeDetailsCtrl', function ($scope, $timeout
 
   getSingleData();
 
-  $scope.sizes = [{ size: 'Large-11"x14"', price: 24 }, { size: 'Medium-8"x10"', price: 18 }, { size: 'Small-4"x6"', price: 12 }];
+  $scope.sizes = [{ size: 'Large-11"x14"', price: 24 }, { size: 'Medium-8"x10"', price: 18 }, { size: 'Small-5"x7"', price: 12 }, { size: 'Card Size-4"x6"', price: 10 }];
 
   $scope.select_size = function () {
     $scope.price = '$' + $scope.size_option.price;
@@ -782,6 +835,9 @@ angular.module('app').controller('templeDetailsCtrl', function ($scope, $timeout
     $cookies.putObject('cart', $scope.cart);
     console.log($scope.cart);
     $scope.addedmessage();
+    $timeout(function () {
+      $state.transitionTo($state.current, { id: $stateParams.id }, { reload: true });
+    }, 1000);
   };
 });
 'use strict';
@@ -795,19 +851,6 @@ angular.module('app').controller('watercolorDetailsCtrl', function ($scope, $tim
   $scope.cart = $cookies.getObject('cart') || [];
   console.log($scope.cart);
 
-  var cartCounter = function cartCounter() {
-    var cartCount = {
-      num: 0
-    };
-    for (var i = 0; i < $scope.cart.length; i++) {
-      cartCount.num += $scope.cart[i].quantity;
-    }
-    $scope.cartnumber = cartCount.num;
-    console.log("cart count", $scope.cartnumber);
-  };
-
-  cartCounter();
-
   var getSingleData = function getSingleData() {
     storeService.getWatercolors().then(function (response) {
       for (var i = 0; i < response.data.length; i++) {
@@ -820,7 +863,7 @@ angular.module('app').controller('watercolorDetailsCtrl', function ($scope, $tim
 
   getSingleData();
 
-  $scope.sizes = [{ size: 'Large-11"x14"', price: 24 }, { size: 'Medium-8"x10"', price: 18 }, { size: 'Small-4"x6"', price: 12 }];
+  $scope.sizes = [{ size: 'Large-11"x14"', price: 24 }, { size: 'Medium-8"x10"', price: 18 }, { size: 'Small-5"x7"', price: 12 }, { size: 'Card Size-4"x6"', price: 10 }];
 
   $scope.select_size = function () {
     $scope.price = '$' + $scope.size_option.price;
@@ -868,6 +911,9 @@ angular.module('app').controller('watercolorDetailsCtrl', function ($scope, $tim
     $cookies.putObject('cart', $scope.cart);
     console.log($scope.cart);
     $scope.addedmessage();
+    $timeout(function () {
+      $state.transitionTo($state.current, { id: $stateParams.id }, { reload: true });
+    }, 1000);
   };
 });
 'use strict';
@@ -879,22 +925,6 @@ angular.module('app').controller('watercolorsCtrl', function ($scope, $timeout, 
   $scope.cartnumber = { num: 0 };
 
   $scope.cart = $cookies.getObject('cart') || [];
-
-  var cartCounter = function cartCounter() {
-    var cartCount = {
-      num: 0
-    };
-    for (var i = 0; i < $scope.cart.length; i++) {
-      cartCount.num += $scope.cart[i].quantity;
-    }
-    $scope.cartnumber = cartCount.num;
-    console.log("cart count", $scope.cartnumber);
-  };
-
-  cartCounter();
-
-  $scope.cart = $cookies.getObject('cart') || [];
-  console.log($scope.cart);
 
   var getData = function getData() {
     storeService.getWatercolors().then(function (response) {
