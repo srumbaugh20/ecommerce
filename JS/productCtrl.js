@@ -48,7 +48,8 @@ function(){
      descript: $scope.watercolors[$index].descript,
      price_large: $scope.watercolors[$index].price_large,
      price_medium: $scope.watercolors[$index].price_medium,
-     price_small: $scope.watercolors[$index].price_small
+     price_small: $scope.watercolors[$index].price_small,
+     card_size: $scope.watercolors[$index].card_size
    }
 
   console.log(water);
@@ -78,7 +79,8 @@ function(){
      descript: $scope.temples[$index].descript,
      price_large: $scope.temples[$index].price_large,
      price_medium: $scope.temples[$index].price_medium,
-     price_small: $scope.temples[$index].price_small
+     price_small: $scope.temples[$index].price_small,
+     card_size: $scope.temples[$index].card_size
    }
 
   console.log(temple);
@@ -152,7 +154,8 @@ function(){
        descript: $scope.addWdes,
        price_large: $scope.addWlarge,
        price_medium: $scope.addWmedium,
-       price_small: $scope.addWsmall
+       price_small: $scope.addWsmall,
+       card_size: $scope.addWcard
    }
 
   console.log(water);
@@ -180,7 +183,8 @@ function(){
        descript: $scope.addTdes,
        price_large: $scope.addTlarge,
        price_medium: $scope.addTmedium,
-       price_small: $scope.addTsmall
+       price_small: $scope.addTsmall,
+       card_size: $scope.addTcard
    }
 
   console.log(temple);

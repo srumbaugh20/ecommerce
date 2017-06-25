@@ -14,9 +14,10 @@ create_temple: function(req, res, next){
   var large = req.body.price_large;
   var medium = req.body.price_medium;
   var small = req.body.price_small;
+  var card = req.body.card_size;
 
 
-  db.create_temples([name, loc, desc, img, large, medium, small], function(err){
+  db.create_temples([name, loc, desc, img, large, medium, small, card], function(err){
     console.log(name);
       res.status(202).send("Item Created");
   });
@@ -30,9 +31,9 @@ create_watercolor: function(req, res, next){
   var large = req.body.price_large;
   var medium = req.body.price_medium;
   var small = req.body.price_small;
+  var card = req.body.card_size;
 
-
-  db.create_watercolors([name, desc, img, large, medium, small], function(err){
+  db.create_watercolors([name, desc, img, large, medium, small, card], function(err){
     console.log(name);
       res.status(202).send("Item Created");
   });
@@ -77,9 +78,10 @@ updateTemple: function(req, res, next){
   var large = req.body.price_large;
   var medium = req.body.price_medium;
   var small = req.body.price_small;
+  var card = req.body.card_size;
   var id = req.body.id;
 
-  db.update_temple([name, loc, descr, img, large, medium, small, id], function(err) {
+  db.update_temple([name, loc, descr, img, large, medium, small, card, id], function(err) {
     console.log(img);
       res.status(202).send("updated");
 
@@ -93,9 +95,10 @@ updateWater: function(req, res, next){
   var large = req.body.price_large;
   var medium = req.body.price_medium;
   var small = req.body.price_small;
+  var card = req.body.card_size;
   var id = req.body.id;
 
-  db.update_watercolors([name, descr, img, large, medium, small, id], function(err) {
+  db.update_watercolors([name, descr, img, large, medium, small, card, id], function(err) {
     console.log(name);
       res.status(202).send("item updated");
 

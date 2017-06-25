@@ -9,18 +9,21 @@ angular.module('app', ['templatescache', 'ui.router', 'ngCookies', 'angular-stri
                 url: '/',
                 templateUrl: './app/home.html',
                 controller: 'homeCtrl'
+                // authenticate: false
 
             })
 
             .state('about', {
                 url: '/about',
                 templateUrl: './app/about.html'
+                // authenticate: false
             })
 
             .state('watercolors', {
                 url: '/watercolors',
                 templateUrl: './app/watercolors.html',
                 controller: 'watercolorsCtrl'
+                // authenticate: false
 
             })
 
@@ -28,23 +31,27 @@ angular.module('app', ['templatescache', 'ui.router', 'ngCookies', 'angular-stri
                 url: '/contact',
                 templateUrl: './app/contact.html',
                 controller: 'contactCtrl'
+                // authenticate: false
             })
 
             .state('confirmed', {
                 url: '/confirmed',
                 templateUrl: './app/confirmed.html'
+                // authenticate: false
             })
 
             .state('cart', {
                 url: '/cart',
                 templateUrl: './app/cart.html',
                 controller: 'cartCtrl'
+                // authenticate: false
             })
 
             .state('checkout', {
                 url: '/checkout',
                 templateUrl: './app/checkout.html',
                 controller: 'checkoutCtrl'
+                // authenticate: false
             })
 
 
@@ -53,12 +60,14 @@ angular.module('app', ['templatescache', 'ui.router', 'ngCookies', 'angular-stri
                 url: '/temples',
                 templateUrl: './app/temples.html',
                 controller: 'templeCtrl'
+                // authenticate: false
             })
 
             .state('orders', {
                 url: '/orders',
                 templateUrl: './app/orders.html',
                 controller: 'ordersCtrl'
+                // authenticate: true
 
             })
 
@@ -66,6 +75,7 @@ angular.module('app', ['templatescache', 'ui.router', 'ngCookies', 'angular-stri
                 url: '/products',
                 templateUrl: './app/products.html',
                 controller: 'productCtrl'
+                // authenticate: true
 
             })
 
@@ -73,15 +83,26 @@ angular.module('app', ['templatescache', 'ui.router', 'ngCookies', 'angular-stri
                 url: '/templedetails/:id',
                 templateUrl: './app/temple-page.html',
                 controller: 'templeDetailsCtrl'
+
             })
 
             .state('watercolordetails', {
                 url: '/watercolordetails/:id',
                 templateUrl: './app/watercolor-page.html',
                 controller: 'watercolorDetailsCtrl'
+
+            })
+
+            .state('login', {
+                url: '/login',
+                templateUrl: './app/login.html',
+                controller: 'loginCtrl'
+
             })
 
 
 
         $urlRouterProvider.otherwise('/');
+
+
 });

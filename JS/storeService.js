@@ -65,7 +65,8 @@ angular.module('app')
             descript: water.descript,
             price_large: water.price_large,
             price_medium: water.price_medium,
-            price_small: water.price_small
+            price_small: water.price_small,
+            card_size: water.card_size
           }
         })
       }
@@ -83,7 +84,8 @@ angular.module('app')
             descript: temple.descript,
             price_large: temple.price_large,
             price_medium: temple.price_medium,
-            price_small: temple.price_small
+            price_small: temple.price_small,
+            card_size: temple.card_size
           }
         })
       }
@@ -122,7 +124,8 @@ angular.module('app')
             descript: water.descript,
             price_large: water.price_large,
             price_medium: water.price_medium,
-            price_small: water.price_small
+            price_small: water.price_small,
+            card_size: water.card_size
           }
         })
       }
@@ -138,7 +141,8 @@ angular.module('app')
             descript: temple.descript,
             price_large: temple.price_large,
             price_medium: temple.price_medium,
-            price_small: temple.price_small
+            price_small: temple.price_small,
+            card_size: temple.card_size
           }
         })
       }

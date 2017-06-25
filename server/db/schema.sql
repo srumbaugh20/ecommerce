@@ -9,6 +9,18 @@ create table watercolors (id SERIAL PRIMARY KEY,
 
                                );
 
+ create table temple_paintings (id SERIAL PRIMARY KEY,
+                                name varchar(200),
+                                descript varchar(1000),
+                                location varchar(200),
+                                imageURL varchar(200),
+                                price_large integer,
+                                price_medium integer,
+                                price_small integer
+
+
+                                );
+
 create table orders (id SERIAL PRIMARY KEY,
                               token varchar(200),
                               name varchar(50),

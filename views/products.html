@@ -22,6 +22,7 @@
             <th>Price-Large</th>
             <th>Price-Medium</th>
             <th>Price-Small</th>
+            <th>Price Card-Size</th>
             <th></th>
         </tr>
         <tr ng:repeat="item in watercolors track by $index">
@@ -33,6 +34,7 @@
           <td><input ng-model="watercolors[$index].price_large" type="text" name="name" value="{{item.price_large}}"></td>
           <td><input ng-model="watercolors[$index].price_medium" type="text" name="name" value="{{item.price_medium}}"></td>
           <td><input ng-model="watercolors[$index].price_small" type="text" name="name" value="{{item.price_small}}"></td>
+          <td><input ng-model="watercolors[$index].card_size" type="text" name="name" value="{{item.card_size}}"></td>
           <td>
             <div>
               <button class="btn btn-primary" ng-click="updateWatercolor($index)" style="margin-bottom: 4px;" >Update</button>
@@ -51,6 +53,7 @@
           <th>Price-Large</th>
           <th>Price-Medium</th>
           <th>Price-Small</th>
+          <th>Price Card-Size</th>
           <th></th>
         </tr>
         <tr>
@@ -60,6 +63,7 @@
           <td><input style="width: 100px; margin-top: 15px;" ng-model="addWlarge" type="number"  placeholder="Price large" require></td>
           <td><input style="width: 120px; margin-top: 15px;" ng-model="addWmedium" type="number"  placeholder="Price medium" require></td>
           <td><input style="width: 100px; margin-top: 15px;" ng-model="addWsmall" type="number"  placeholder="Price small" require></td>
+          <td><input style="width: 100px; margin-top: 15px;" ng-model="addWcard" type="number"  placeholder="Price card" require></td>
           <td><button class="btn btn-primary" ng-click="addWatercolor()" style="margin-top: 10px;">Add</button></td>
         </tr>
     </table>
@@ -81,6 +85,7 @@
             <th>Price-Large</th>
             <th>Price-Medium</th>
             <th>Price-Small</th>
+            <th>Price Card-Size</th>
             <th></th>
         </tr>
         <tr ng-repeat="item in temples | filter: byName track by $index">
@@ -93,6 +98,7 @@
           <td><input ng-model="temples[$index].price_large" type="text" name="name" value="{{item.price_large}}"></td>
           <td><input ng-model="temples[$index].price_medium" type="text" name="name" value="{{item.price_medium}}"></td>
           <td><input ng-model="temples[$index].price_small" type="text" name="name" value="{{item.price_small}}"></td>
+          <td><input ng-model="temples[$index].card_size" type="text" name="name" value="{{item.card_size}}"></td>
           <td>
             <div>
               <button class="btn btn-primary" style="margin-bottom: 4px" ng-click="updateTemple($index)">Update</button>
@@ -112,6 +118,7 @@
         <th>Price-Large</th>
         <th>Price-Medium</th>
         <th>Price-Small</th>
+        <th>Price Card-Size</th>
         <th></th>
       </tr>
       <tr>
@@ -122,6 +129,7 @@
         <td><input style="width: 100px; margin-top: 15px;" ng-model="addTlarge" type="number"  placeholder="Price large" require></td>
         <td><input style="width: 120px; margin-top: 15px;" ng-model="addTmedium" type="number"  placeholder="Price medium" require></td>
         <td><input style="width: 100px; margin-top: 15px;" ng-model="addTsmall" type="number"  placeholder="Price small" require></td>
+        <td><input style="width: 100px; margin-top: 15px;" ng-model="addTcard" type="number"  placeholder="Price card" require></td>
         <td><button class="btn btn-primary" ng-click="addTemple()" style="margin-top: 10px;">Add</button></td>
       </tr>
   </table>

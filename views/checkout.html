@@ -3,10 +3,7 @@
 
 
   <div>
-    <div class="cartcontainer" ui-sref="cart" style="margin-bottom:15px;">
-      <a class="menu-links" ui-sref="cart" ng-cloak> Cart {{cartnumber}} </a>
-      <div class="cartIcon"></div>
-    </div>
+    <cartdirective></cartdirective>
   <ul class="breadcrumb">
     <li><a ui-sref="home">Home</a></li>
     <li><a ui-sref="cart">Cart</a></li>
@@ -53,8 +50,8 @@
             <td></td>
             <td></td>
             <td></td>
-            <td><b>Flat-rate shipping:</b></td>
-            <td>$3</td>
+            <td><b>Flat-rate $6 shipping (Free shipping over $47):</b></td>
+            <td>{{shipping | currency}}</td>
         </tr>
         <tr>
             <td></td>
@@ -62,7 +59,7 @@
             <td></td>
             <td></td>
             <td><b>Total:</b></td>
-            <td>{{grandtotal | currency}}</td>
+            <td>{{superTotal | currency}}</td>
         </tr>
     </table>
 </div>
