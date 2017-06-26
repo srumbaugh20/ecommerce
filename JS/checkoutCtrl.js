@@ -73,7 +73,7 @@ $scope.charge = function(){
 })
   .then(function(){
     $scope.emptycart();
-    setTimeout(function(){ $state.go('home'); }, 6000);
+    setTimeout(function(){ $state.go('home'); }, 4500);
 
 })
 
