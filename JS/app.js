@@ -1,7 +1,7 @@
 angular.module('app', ['templatescache', 'ui.router', 'ngCookies', 'angular-stripe', 'ngRoute'])
     .config(function($stateProvider, $urlRouterProvider, stripeProvider) {
 
-      stripeProvider.setPublishableKey('pk_test_wPfomjBcWiAe2RbDJi3iuQ7V');
+      stripeProvider.setPublishableKey('pk_live_PG4aFa7UYVVWVZuuNnzugQ3N');
 
 
         $stateProvider

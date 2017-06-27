@@ -38,7 +38,9 @@ getSingleData();
 $scope.sizes = [
   {size: 'Large-11"x14"', price: 24},
   {size: 'Medium-8"x10"', price: 18},
-  {size: 'Small-4"x6"', price: 12}
+  {size: 'Small-5"x7"', price: 12},
+  {size: 'Card Size-4"x6"', price: 10}
+
 ];
 
 
@@ -91,6 +93,9 @@ $scope.addtocart = function(){
 $cookies.putObject('cart', $scope.cart);
 console.log($scope.cart);
 $scope.addedmessage();
+$timeout(function(){
+   $state.transitionTo($state.current, {id:$stateParams.id}, { reload: true});
+}, 1000);
 
 }
 
