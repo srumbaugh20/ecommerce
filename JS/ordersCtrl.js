@@ -8,6 +8,7 @@ $scope.updatedmessage = function() {
        $scope.showMessage = true;
        $timeout(function(){
           $scope.showMessage = false;
+          $state.transitionTo($state.current, { reload: true});
        }, 2000);
     };
 
@@ -46,6 +47,9 @@ function(){
   storeService.deleteorder(id);
   swal("Deleted!", "That order has been deleted.", "success");
 });
+$timeout(function(){
+   $state.transitionTo($state.current, {id:$stateParams.id}, { reload: true});
+}, 1000);
 }
 
 $scope.UniqueTracking = function(index, id){
