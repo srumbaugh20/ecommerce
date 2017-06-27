@@ -31,10 +31,10 @@
           <td><input type="text" name="name" value="{{item.imageurl}}"></td>
           <td><input ng-model="watercolors[$index].name" type="text" name="name" value="{{item.name}}"></td>
           <td><textarea ng-model="watercolors[$index].descript" name="description" cols="20" rows="5">{{item.descript}}</textarea></td>
-          <td><input ng-model="watercolors[$index].price_large" type="text" name="name" value="{{item.price_large}}"></td>
-          <td><input ng-model="watercolors[$index].price_medium" type="text" name="name" value="{{item.price_medium}}"></td>
-          <td><input ng-model="watercolors[$index].price_small" type="text" name="name" value="{{item.price_small}}"></td>
-          <td><input ng-model="watercolors[$index].card_size" type="text" name="name" value="{{item.card_size}}"></td>
+          <td><input ng-model="watercolors[$index].price_large" type="number" name="name" value="{{item.price_large}}"></td>
+          <td><input ng-model="watercolors[$index].price_medium" type="number" name="name" value="{{item.price_medium}}"></td>
+          <td><input ng-model="watercolors[$index].price_small" type="number" name="name" value="{{item.price_small}}"></td>
+          <td><input ng-model="watercolors[$index].card_size" type="number" name="name" value="{{item.card_size}}"></td>
           <td>
             <div>
               <button class="btn btn-primary" ng-click="updateWatercolor($index)" style="margin-bottom: 4px;" >Update</button>
@@ -95,10 +95,10 @@
           <td><input ng-model="temples[$index].name" onchange=""type="text" name="name" value="{{item.name}}"></td>
           <td><input ng-model="temples[$index].location" type="text" name="name" value="{{item.location}}"></td>
           <td><textarea ng-model="temples[$index].descript" name="description" cols="20" rows="5">{{item.descript}}</textarea></td>
-          <td><input ng-model="temples[$index].price_large" type="text" name="name" value="{{item.price_large}}"></td>
-          <td><input ng-model="temples[$index].price_medium" type="text" name="name" value="{{item.price_medium}}"></td>
-          <td><input ng-model="temples[$index].price_small" type="text" name="name" value="{{item.price_small}}"></td>
-          <td><input ng-model="temples[$index].card_size" type="text" name="name" value="{{item.card_size}}"></td>
+          <td><input ng-model="temples[$index].price_large" type="number" name="name" value="{{item.price_large}}"></td>
+          <td><input ng-model="temples[$index].price_medium" type="number" name="name" value="{{item.price_medium}}"></td>
+          <td><input ng-model="temples[$index].price_small" type="number" name="name" value="{{item.price_small}}"></td>
+          <td><input ng-model="temples[$index].card_size" type="number" name="name" value="{{item.card_size}}"></td>
           <td>
             <div>
               <button class="btn btn-primary" style="margin-bottom: 4px" ng-click="updateTemple($index)">Update</button>
@@ -108,7 +108,7 @@
         </tr>
     </table>
     <br />
-    <h4>Add Watercolor Item</h4>
+    <h4>Add Temple Item</h4>
     <table class="table">
       <tr>
         <th>Name</th>
