@@ -54,10 +54,11 @@ function(){
 
   console.log(water);
   storeService.updateWater(water);
-  swal("Updated!", "That item has been updated.", "success");
   $timeout(function(){
      $state.transitionTo($state.current, {id:$stateParams.id}, { reload: true});
   }, 1000);
+  swal("Updated!", "That item has been updated.", "success");
+
 });
 }
 
@@ -88,10 +89,11 @@ function(){
 
   console.log(temple);
   storeService.updateTemples(temple);
-  swal("Updated!", "That item has been updated.", "success");
   $timeout(function(){
      $state.transitionTo($state.current, { reload: true});
   }, 1000);
+  swal("Updated!", "That item has been updated.", "success");
+
 });
 }
 
@@ -172,10 +174,11 @@ function(){
 
   console.log(water);
   storeService.addWatercolor(water);
-  swal("Added!", "The item has been added!", "success");
   $timeout(function(){
      $state.transitionTo($state.current, { reload: true});
   }, 1000);
+  swal("Added!", "The item has been added!", "success");
+
 });
 }
 
@@ -204,10 +207,11 @@ function(){
 
   console.log(temple);
   storeService.addTemple(temple);
-  swal("Added!", "The item has been added!", "success");
   $timeout(function(){
      $state.transitionTo($state.current, { reload: true});
   }, 1000);
+  swal("Added!", "The item has been added!", "success");
+
 });
 }
 
