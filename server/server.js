@@ -5,6 +5,8 @@ var massive = require('massive');
 var path = require('path');
 var stripeKey = require('./stripeSK.js');
 var server = require('./stripeSK.js');
+var fs = require('fs');
+var https = require('https');
 var stripe = require('stripe')(stripeKey.secretKey);
 var app = module.exports = express();
 
@@ -37,8 +39,18 @@ app.delete('/deletewatercolor/:id', ctrl.deletewatercolor);
 app.delete('/api/deleteorder/:id', ctrl.deleteorder);
 
 
-
-var port = 3030;
-app.listen(port, function() {
-  console.log("Started server on port", port);
-});
+if (process.env.NODE_ENV === 'production'){
+  var options = {
+    key : fs.readFileSync('./key.txt'),
+    cert: fs.readFileSync('./cert.crt')
+  }
+  var port = 80;
+  https.createServer(options, app).listen(port, () => {
+    console.log("Started server on port", port);
+  })
+  } else {
+    var port = 3030;
+    app.listen(port, function() {
+      console.log("Started server on port", port);
+    });
+  }
